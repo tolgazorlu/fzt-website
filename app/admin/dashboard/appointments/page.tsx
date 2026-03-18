@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function AppointmentsPage() {
-  const appointments = getAppointments()
+export default async function AppointmentsPage() {
+  const appointments = await getAppointments()
 
   return (
     <div className="p-8">

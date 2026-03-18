@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params
-  const blog = getBlogBySlug(slug)
+  const blog = await getBlogBySlug(slug)
   if (!blog) {
     return NextResponse.json({ error: "Blog bulunamadı" }, { status: 404 })
   }

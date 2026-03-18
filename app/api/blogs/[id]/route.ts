@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params
-  const blog = getBlogById(id)
+  const blog = await getBlogById(id)
   if (!blog) {
     return NextResponse.json({ error: "Blog bulunamadı" }, { status: 404 })
   }
@@ -23,7 +23,7 @@ export async function PUT(
     return NextResponse.json({ error: "Yetkisiz" }, { status: 401 })
   }
   const { id } = await params
-  const existing = getBlogById(id)
+  const existing = await getBlogById(id)
   if (!existing) {
     return NextResponse.json({ error: "Blog bulunamadı" }, { status: 404 })
   }
@@ -35,8 +35,8 @@ export async function PUT(
     if (body.content !== undefined) updates.content = String(body.content)
     if (body.coverImage !== undefined) updates.coverImage = body.coverImage || undefined
     if (body.published !== undefined) updates.published = Boolean(body.published)
-    if (body.slug !== undefined) updates.slug = String(body.slug).trim() || generateSlug(updates.title as string || existing.title)
-    const blog = updateBlog(id, updates)
+    if (body.slug !== undefined) updates.slug = String(body.slug).trim() || (await generateSlug((updates.title as string) || existing.title))
+    const blog = await updateBlog(id, updates)
     return NextResponse.json(blog)
   } catch {
     return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 })
@@ -52,6 +52,6 @@ export async function DELETE(
     return NextResponse.json({ error: "Yetkisiz" }, { status: 401 })
   }
   const { id } = await params
-  deleteBlog(id)
+  await deleteBlog(id)
   return NextResponse.json({ success: true })
 }

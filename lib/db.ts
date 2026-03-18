@@ -1,12 +1,4 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs"
-import { join } from "path"
-
-// Vercel'de dosya sistemi salt okunur; /tmp yazılabilir
-const DATA_DIR = process.env.VERCEL
-  ? join("/tmp", "fzt-website-data")
-  : join(process.cwd(), "data")
-const APPOINTMENTS_FILE = join(DATA_DIR, "appointments.json")
-const BLOGS_FILE = join(DATA_DIR, "blogs.json")
+import { storageGet, storageSet, REDIS_KEYS } from "./storage"
 
 export interface Appointment {
   id: string
@@ -29,71 +21,50 @@ export interface Blog {
   updatedAt: string
 }
 
-function ensureDataDir() {
-  try {
-    if (!existsSync(DATA_DIR)) {
-      mkdirSync(DATA_DIR, { recursive: true })
-    }
-  } catch {
-    // Vercel'de mkdir başarısız olabilir
-  }
+export async function getAppointments(): Promise<Appointment[]> {
+  return storageGet<Appointment[]>(REDIS_KEYS.appointments, [])
 }
 
-function readJson<T>(filePath: string, defaultValue: T): T {
-  try {
-    if (existsSync(filePath)) {
-      const data = readFileSync(filePath, "utf-8")
-      return JSON.parse(data) as T
-    }
-  } catch {
-    // Fall through to default
-  }
-  return defaultValue
-}
-
-function writeJson<T>(filePath: string, data: T) {
-  try {
-    ensureDataDir()
-    writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8")
-  } catch {
-    // Vercel'de yazma başarısız olursa sessizce geç
-  }
-}
-
-export function getAppointments(): Appointment[] {
-  return readJson<Appointment[]>(APPOINTMENTS_FILE, [])
-}
-
-export function addAppointment(appointment: Omit<Appointment, "id" | "createdAt">) {
-  const appointments = getAppointments()
+export async function addAppointment(
+  appointment: Omit<Appointment, "id" | "createdAt">
+): Promise<Appointment> {
+  const appointments = await getAppointments()
   const newAppointment: Appointment = {
     ...appointment,
     id: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
   }
   appointments.unshift(newAppointment)
-  writeJson(APPOINTMENTS_FILE, appointments)
+  await storageSet(REDIS_KEYS.appointments, appointments)
   return newAppointment
 }
 
-export function getBlogs(publishedOnly = false): Blog[] {
-  const blogs = readJson<Blog[]>(BLOGS_FILE, [])
+export async function getBlogs(publishedOnly = false): Promise<Blog[]> {
+  const blogs = await storageGet<Blog[]>(REDIS_KEYS.blogs, [])
   if (publishedOnly) {
-    return blogs.filter((b) => b.published).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    return blogs
+      .filter((b) => b.published)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
   }
-  return blogs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  return blogs.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  )
 }
 
-export function getBlogBySlug(slug: string): Blog | undefined {
-  return getBlogs(false).find((b) => b.slug === slug && b.published)
+export async function getBlogBySlug(slug: string): Promise<Blog | undefined> {
+  const blogs = await getBlogs(false)
+  return blogs.find((b) => b.slug === slug && b.published)
 }
 
-export function getBlogById(id: string): Blog | undefined {
-  return getBlogs(false).find((b) => b.id === id)
+export async function getBlogById(id: string): Promise<Blog | undefined> {
+  const blogs = await getBlogs(false)
+  return blogs.find((b) => b.id === id)
 }
 
-export function createBlog(blog: Omit<Blog, "id" | "createdAt" | "updatedAt">) {
-  const blogs = getBlogs(false)
+export async function createBlog(
+  blog: Omit<Blog, "id" | "createdAt" | "updatedAt">
+): Promise<Blog> {
+  const blogs = await getBlogs(false)
   const now = new Date().toISOString()
   const newBlog: Blog = {
     ...blog,
@@ -102,12 +73,15 @@ export function createBlog(blog: Omit<Blog, "id" | "createdAt" | "updatedAt">) {
     updatedAt: now,
   }
   blogs.unshift(newBlog)
-  writeJson(BLOGS_FILE, blogs)
+  await storageSet(REDIS_KEYS.blogs, blogs)
   return newBlog
 }
 
-export function updateBlog(id: string, updates: Partial<Omit<Blog, "id" | "createdAt">>) {
-  const blogs = getBlogs(false)
+export async function updateBlog(
+  id: string,
+  updates: Partial<Omit<Blog, "id" | "createdAt">>
+): Promise<Blog | undefined> {
+  const blogs = await getBlogs(false)
   const index = blogs.findIndex((b) => b.id === id)
   if (index === -1) return undefined
   const updated = {
@@ -116,13 +90,13 @@ export function updateBlog(id: string, updates: Partial<Omit<Blog, "id" | "creat
     updatedAt: new Date().toISOString(),
   }
   blogs[index] = updated
-  writeJson(BLOGS_FILE, blogs)
+  await storageSet(REDIS_KEYS.blogs, blogs)
   return updated
 }
 
-export function deleteBlog(id: string) {
-  const blogs = getBlogs(false).filter((b) => b.id !== id)
-  writeJson(BLOGS_FILE, blogs)
+export async function deleteBlog(id: string): Promise<boolean> {
+  const blogs = (await getBlogs(false)).filter((b) => b.id !== id)
+  await storageSet(REDIS_KEYS.blogs, blogs)
   return true
 }
 
@@ -135,14 +109,13 @@ function slugify(text: string): string {
   for (const [tr, en] of Object.entries(trMap)) {
     slug = slug.replace(new RegExp(tr, "g"), en)
   }
-  return slug
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
+  return slug.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
 }
 
-export function generateSlug(title: string): string {
+export async function generateSlug(title: string): Promise<string> {
   const base = slugify(title)
-  const existing = getBlogs(false).map((b) => b.slug)
+  const blogs = await getBlogs(false)
+  const existing = blogs.map((b) => b.slug)
   let slug = base
   let i = 1
   while (existing.includes(slug)) {

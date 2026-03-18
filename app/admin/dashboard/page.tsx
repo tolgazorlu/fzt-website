@@ -3,9 +3,11 @@ import { getAppointments, getBlogs } from "@/lib/db"
 import { Calendar, FileText, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export default function AdminDashboardPage() {
-  const appointments = getAppointments()
-  const blogs = getBlogs(false)
+export default async function AdminDashboardPage() {
+  const [appointments, blogs] = await Promise.all([
+    getAppointments(),
+    getBlogs(false),
+  ])
   const recentAppointments = appointments.slice(0, 5)
   const recentBlogs = blogs.slice(0, 5)
 

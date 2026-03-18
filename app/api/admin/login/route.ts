@@ -11,7 +11,7 @@ import {
 
 export async function POST(request: NextRequest) {
   try {
-    const lock = checkLoginLock()
+    const lock = await checkLoginLock()
     if (lock.locked && lock.remainingMs) {
       const minutes = Math.ceil(lock.remainingMs / 60000)
       return NextResponse.json(
@@ -32,9 +32,9 @@ export async function POST(request: NextRequest) {
 
     const valid = await verifyPassword(password)
     if (!valid) {
-      recordFailedAttempt()
-      const newLock = checkLoginLock()
-      const attemptsLeft = newLock.locked ? 0 : 5 - getFailedAttempts()
+      await recordFailedAttempt()
+      const newLock = await checkLoginLock()
+      const attemptsLeft = newLock.locked ? 0 : 5 - (await getFailedAttempts())
       return NextResponse.json(
         {
           error: attemptsLeft > 0
@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      resetFailedAttempts()
+      await resetFailedAttempts()
     } catch {
       // Rate limit sıfırlama başarısız olsa da girişe izin ver
     }

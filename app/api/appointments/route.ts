@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    const appointment = addAppointment({
+    const appointment = await addAppointment({
       name: String(name).trim(),
       phone: String(phone).trim(),
       email: String(email).trim(),
@@ -29,6 +29,6 @@ export async function GET(request: NextRequest) {
   if (!auth) {
     return NextResponse.json({ error: "Yetkisiz" }, { status: 401 })
   }
-  const appointments = getAppointments()
+  const appointments = await getAppointments()
   return NextResponse.json(appointments)
 }

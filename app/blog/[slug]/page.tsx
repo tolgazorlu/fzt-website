@@ -13,7 +13,7 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const blog = getBlogBySlug(slug)
+  const blog = await getBlogBySlug(slug)
   if (!blog) notFound()
 
   return (

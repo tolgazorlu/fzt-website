@@ -7,8 +7,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar, FileText } from "lucide-react"
 
-export default function BlogPage() {
-  const blogs = getBlogs(true)
+export default async function BlogPage() {
+  const blogs = await getBlogs(true)
 
   return (
     <main className="min-h-screen">

@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Plus, Pencil, FileText, Eye, EyeOff } from "lucide-react"
 
-export default function AdminBlogsPage() {
-  const blogs = getBlogs(false)
+export default async function AdminBlogsPage() {
+  const blogs = await getBlogs(false)
 
   return (
     <div className="p-8">

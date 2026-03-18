@@ -5,7 +5,7 @@ import { isAuthenticated } from "@/lib/auth"
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const publishedOnly = searchParams.get("published") === "true"
-  const blogs = getBlogs(publishedOnly)
+  const blogs = await getBlogs(publishedOnly)
   return NextResponse.json(blogs)
 }
 
@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    const slug = body.slug?.trim() || generateSlug(title)
-    const blog = createBlog({
+    const slug = body.slug?.trim() || (await generateSlug(title))
+    const blog = await createBlog({
       title: String(title).trim(),
       excerpt: String(excerpt || "").trim(),
       content: String(content),
