@@ -1,17 +1,53 @@
 import { NextRequest, NextResponse } from "next/server"
 import { verifyPassword, createSession } from "@/lib/auth"
+import {
+  checkLoginLock,
+  recordFailedAttempt,
+  resetFailedAttempts,
+  getFailedAttempts,
+} from "@/lib/auth-lock"
 
 export async function POST(request: NextRequest) {
   try {
+    const lock = checkLoginLock()
+    if (lock.locked && lock.remainingMs) {
+      const minutes = Math.ceil(lock.remainingMs / 60000)
+      return NextResponse.json(
+        {
+          error: "Çok fazla başarısız deneme. Lütfen " + minutes + " dakika sonra tekrar deneyin.",
+          locked: true,
+          remainingMinutes: minutes,
+        },
+        { status: 429 }
+      )
+    }
+
     const body = await request.json()
-    const { password } = body
+    const password = typeof body?.password === "string" ? body.password : ""
     if (!password) {
       return NextResponse.json({ error: "Şifre gerekli" }, { status: 400 })
     }
-    const valid = await verifyPassword(String(password))
+
+    const valid = await verifyPassword(password)
     if (!valid) {
-      return NextResponse.json({ error: "Geçersiz şifre" }, { status: 401 })
+      recordFailedAttempt()
+      const newLock = checkLoginLock()
+      const attemptsLeft = newLock.locked ? 0 : 5 - getFailedAttempts()
+      return NextResponse.json(
+        {
+          error: attemptsLeft > 0
+            ? `Geçersiz şifre. Kalan deneme: ${attemptsLeft}`
+            : "Çok fazla başarısız deneme. 1 saat sonra tekrar deneyin.",
+          locked: newLock.locked,
+          remainingMinutes: newLock.locked && newLock.remainingMs
+            ? Math.ceil(newLock.remainingMs / 60000)
+            : undefined,
+        },
+        { status: 401 }
+      )
     }
+
+    resetFailedAttempts()
     await createSession()
     return NextResponse.json({ success: true })
   } catch {

@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Lock, LogIn, Loader2 } from "lucide-react"
+import { Lock, LogIn, Loader2, ShieldAlert } from "lucide-react"
 
 export default function AdminLoginPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [locked, setLocked] = useState(false)
+  const [remainingMinutes, setRemainingMinutes] = useState<number | null>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -21,6 +23,18 @@ export default function AdminLoginPage() {
       })
       .catch(() => {})
   }, [router])
+
+  useEffect(() => {
+    fetch("/api/admin/login/status")
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.locked) {
+          setLocked(true)
+          setRemainingMinutes(d.remainingMinutes ?? 60)
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +49,10 @@ export default function AdminLoginPage() {
       const data = await res.json()
       if (!res.ok) {
         setError(data.error || "Giriş başarısız")
+        if (data.locked) {
+          setLocked(true)
+          setRemainingMinutes(data.remainingMinutes ?? 60)
+        }
         return
       }
       router.replace("/admin/dashboard")
@@ -76,25 +94,37 @@ export default function AdminLoginPage() {
             Yönetim paneline erişmek için şifrenizi girin
           </p>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1.5">
-                Şifre
-              </label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                required
-                className="w-full"
-                autoComplete="current-password"
-              />
-            </div>
-            {error && (
-              <p className="text-sm text-destructive">{error}</p>
-            )}
-            <Button type="submit" className="w-full" size="lg" disabled={loading}>
+            {locked ? (
+              <div className="flex flex-col items-center gap-3 py-4 px-4 rounded-lg bg-destructive/10 border border-destructive/20">
+                <ShieldAlert className="h-10 w-10 text-destructive" />
+                <p className="text-sm text-center text-foreground font-medium">
+                  Çok fazla başarısız giriş denemesi.
+                </p>
+                <p className="text-sm text-muted-foreground text-center">
+                  Lütfen {remainingMinutes ?? 60} dakika sonra tekrar deneyin.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div>
+                  <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1.5">
+                    Şifre
+                  </label>
+                  <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    required
+                    className="w-full"
+                    autoComplete="off"
+                  />
+                </div>
+                {error && (
+                  <p className="text-sm text-destructive">{error}</p>
+                )}
+                <Button type="submit" className="w-full" size="lg" disabled={loading}>
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
@@ -107,6 +137,8 @@ export default function AdminLoginPage() {
                 </span>
               )}
             </Button>
+              </>
+            )}
           </form>
         </div>
       </motion.div>

@@ -8,7 +8,8 @@ const JWT_SECRET = new TextEncoder().encode(
 const COOKIE_NAME = "admin_session"
 const SESSION_DURATION = 60 * 60 * 24 // 24 hours
 
-const DEFAULT_PASSWORD_HASH = "$2b$10$sXuNnP0obdBAzwzyjBF.Du6wqUlJGFt2dEhmzXaNp68NkUcgM1MJ6" // admin123
+// Varsayılan: Fzt#Admin2025!Guvenli (üretimde ADMIN_PASSWORD_HASH ile değiştirin)
+const DEFAULT_PASSWORD_HASH = "$2b$12$JBUSEpSJ1z3gMjfGxBdyeuQteiMxQTmcPRnODhyJ8BCF/XgNEULbG"
 
 export async function verifyPassword(password: string): Promise<boolean> {
   const hash = process.env.ADMIN_PASSWORD_HASH || DEFAULT_PASSWORD_HASH
