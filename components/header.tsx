@@ -12,6 +12,7 @@ const navLinks = [
   { href: "#hizmetler", label: "Hizmetler" },
   { href: "#istatistikler", label: "Başarılarımız" },
   { href: "#yorumlar", label: "Yorumlar" },
+  { href: "/blog", label: "Blog" },
   { href: "#iletisim", label: "İletişim" },
 ]
 
