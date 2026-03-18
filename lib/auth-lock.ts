@@ -1,25 +1,8 @@
-import { storageGet, storageSet, REDIS_KEYS } from "./storage"
+import { fetchQuery, fetchMutation } from "convex/nextjs"
+import { api } from "@/convex/_generated/api"
 
-const MAX_ATTEMPTS = 5
-const LOCK_DURATION_MS = 60 * 60 * 1000 // 1 saat
-
-interface LockData {
-  failedAttempts: number
-  lastAttemptAt: string
-  lockedUntil: string | null
-}
-
-async function readLock(): Promise<LockData> {
-  const data = await storageGet<LockData>(REDIS_KEYS.authLock, {
-    failedAttempts: 0,
-    lastAttemptAt: "",
-    lockedUntil: null,
-  })
-  return data
-}
-
-async function writeLock(data: LockData): Promise<void> {
-  await storageSet(REDIS_KEYS.authLock, data)
+function hasConvex(): boolean {
+  return !!process.env.NEXT_PUBLIC_CONVEX_URL
 }
 
 export async function checkLoginLock(): Promise<{
@@ -27,10 +10,11 @@ export async function checkLoginLock(): Promise<{
   lockedUntil?: Date
   remainingMs?: number
 }> {
-  const data = await readLock()
+  if (!hasConvex()) return { locked: false }
+  const data = await fetchQuery(api.authLock.get)
   const now = Date.now()
 
-  if (data.lockedUntil) {
+  if (data?.lockedUntil) {
     const lockedUntil = new Date(data.lockedUntil).getTime()
     if (now < lockedUntil) {
       return {
@@ -39,11 +23,7 @@ export async function checkLoginLock(): Promise<{
         remainingMs: lockedUntil - now,
       }
     }
-    await writeLock({
-      failedAttempts: 0,
-      lastAttemptAt: "",
-      lockedUntil: null,
-    })
+    await fetchMutation(api.authLock.reset)
     return { locked: false }
   }
 
@@ -51,34 +31,17 @@ export async function checkLoginLock(): Promise<{
 }
 
 export async function recordFailedAttempt(): Promise<void> {
-  const data = await readLock()
-  const now = new Date().toISOString()
-  const newAttempts = data.failedAttempts + 1
-
-  if (newAttempts >= MAX_ATTEMPTS) {
-    await writeLock({
-      failedAttempts: newAttempts,
-      lastAttemptAt: now,
-      lockedUntil: new Date(Date.now() + LOCK_DURATION_MS).toISOString(),
-    })
-  } else {
-    await writeLock({
-      failedAttempts: newAttempts,
-      lastAttemptAt: now,
-      lockedUntil: null,
-    })
-  }
+  if (!hasConvex()) return
+  await fetchMutation(api.authLock.recordFailed)
 }
 
 export async function resetFailedAttempts(): Promise<void> {
-  await writeLock({
-    failedAttempts: 0,
-    lastAttemptAt: "",
-    lockedUntil: null,
-  })
+  if (!hasConvex()) return
+  await fetchMutation(api.authLock.reset)
 }
 
 export async function getFailedAttempts(): Promise<number> {
-  const data = await readLock()
-  return data.failedAttempts
+  if (!hasConvex()) return 0
+  const data = await fetchQuery(api.authLock.get)
+  return data?.failedAttempts ?? 0
 }

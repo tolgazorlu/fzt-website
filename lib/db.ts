@@ -1,4 +1,9 @@
-import { storageGet, storageSet, REDIS_KEYS } from "./storage"
+import { fetchQuery, fetchMutation } from "convex/nextjs"
+import { api } from "@/convex/_generated/api"
+
+function hasConvex(): boolean {
+  return !!process.env.NEXT_PUBLIC_CONVEX_URL
+}
 
 export interface Appointment {
   id: string
@@ -22,81 +27,72 @@ export interface Blog {
 }
 
 export async function getAppointments(): Promise<Appointment[]> {
-  return storageGet<Appointment[]>(REDIS_KEYS.appointments, [])
+  if (!hasConvex()) return []
+  const list = await fetchQuery(api.appointments.list)
+  return list ?? []
 }
 
 export async function addAppointment(
   appointment: Omit<Appointment, "id" | "createdAt">
 ): Promise<Appointment> {
-  const appointments = await getAppointments()
-  const newAppointment: Appointment = {
-    ...appointment,
-    id: crypto.randomUUID(),
-    createdAt: new Date().toISOString(),
-  }
-  appointments.unshift(newAppointment)
-  await storageSet(REDIS_KEYS.appointments, appointments)
-  return newAppointment
+  if (!hasConvex()) throw new Error("Convex yapılandırılmamış")
+  const result = await fetchMutation(api.appointments.add, {
+    name: appointment.name,
+    phone: appointment.phone,
+    email: appointment.email,
+    message: appointment.message,
+  })
+  return result
 }
 
 export async function getBlogs(publishedOnly = false): Promise<Blog[]> {
-  const blogs = await storageGet<Blog[]>(REDIS_KEYS.blogs, [])
-  if (publishedOnly) {
-    return blogs
-      .filter((b) => b.published)
-      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-  }
-  return blogs.sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  )
+  if (!hasConvex()) return []
+  const list = await fetchQuery(api.blogs.list, { publishedOnly })
+  return list ?? []
 }
 
 export async function getBlogBySlug(slug: string): Promise<Blog | undefined> {
-  const blogs = await getBlogs(false)
-  return blogs.find((b) => b.slug === slug && b.published)
+  if (!hasConvex()) return undefined
+  const blog = await fetchQuery(api.blogs.getBySlug, { slug })
+  return blog ?? undefined
 }
 
 export async function getBlogById(id: string): Promise<Blog | undefined> {
-  const blogs = await getBlogs(false)
-  return blogs.find((b) => b.id === id)
+  if (!hasConvex()) return undefined
+  const blog = await fetchQuery(api.blogs.getById, { id })
+  return blog ?? undefined
 }
 
 export async function createBlog(
   blog: Omit<Blog, "id" | "createdAt" | "updatedAt">
 ): Promise<Blog> {
-  const blogs = await getBlogs(false)
-  const now = new Date().toISOString()
-  const newBlog: Blog = {
-    ...blog,
-    id: crypto.randomUUID(),
-    createdAt: now,
-    updatedAt: now,
-  }
-  blogs.unshift(newBlog)
-  await storageSet(REDIS_KEYS.blogs, blogs)
-  return newBlog
+  if (!hasConvex()) throw new Error("Convex yapılandırılmamış")
+  const result = await fetchMutation(api.blogs.create, {
+    slug: blog.slug,
+    title: blog.title,
+    excerpt: blog.excerpt,
+    content: blog.content,
+    coverImage: blog.coverImage,
+    published: blog.published,
+  })
+  return result
 }
 
 export async function updateBlog(
   id: string,
   updates: Partial<Omit<Blog, "id" | "createdAt">>
 ): Promise<Blog | undefined> {
-  const blogs = await getBlogs(false)
-  const index = blogs.findIndex((b) => b.id === id)
-  if (index === -1) return undefined
-  const updated = {
-    ...blogs[index],
+  if (!hasConvex()) return undefined
+  const result = await fetchMutation(api.blogs.update, {
+    id,
     ...updates,
-    updatedAt: new Date().toISOString(),
-  }
-  blogs[index] = updated
-  await storageSet(REDIS_KEYS.blogs, blogs)
-  return updated
+  })
+  return result
 }
 
 export async function deleteBlog(id: string): Promise<boolean> {
-  const blogs = (await getBlogs(false)).filter((b) => b.id !== id)
-  await storageSet(REDIS_KEYS.blogs, blogs)
+  if (!hasConvex()) return false
+  await fetchMutation(api.blogs.remove, { id })
   return true
 }
 

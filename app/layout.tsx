@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Outfit } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ConvexClientProvider } from './ConvexClientProvider'
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({ 
@@ -46,8 +47,10 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <body className={`${plusJakarta.variable} ${outfit.variable} font-sans antialiased`}>
-        {children}
-        <Analytics />
+        <ConvexClientProvider>
+          {children}
+          <Analytics />
+        </ConvexClientProvider>
       </body>
     </html>
   )
