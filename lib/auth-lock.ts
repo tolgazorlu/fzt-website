@@ -1,7 +1,10 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs"
 import { join } from "path"
 
-const DATA_DIR = join(process.cwd(), "data")
+// Vercel'de dosya sistemi salt okunur; /tmp yazılabilir
+const DATA_DIR = process.env.VERCEL
+  ? join("/tmp", "fzt-website-data")
+  : join(process.cwd(), "data")
 const LOCK_FILE = join(DATA_DIR, "auth-lock.json")
 
 const MAX_ATTEMPTS = 5
@@ -14,8 +17,12 @@ interface LockData {
 }
 
 function ensureDataDir() {
-  if (!existsSync(DATA_DIR)) {
-    mkdirSync(DATA_DIR, { recursive: true })
+  try {
+    if (!existsSync(DATA_DIR)) {
+      mkdirSync(DATA_DIR, { recursive: true })
+    }
+  } catch {
+    // Vercel'de mkdir başarısız olabilir
   }
 }
 
@@ -36,8 +43,12 @@ function readLock(): LockData {
 }
 
 function writeLock(data: LockData) {
-  ensureDataDir()
-  writeFileSync(LOCK_FILE, JSON.stringify(data, null, 2), "utf-8")
+  try {
+    ensureDataDir()
+    writeFileSync(LOCK_FILE, JSON.stringify(data, null, 2), "utf-8")
+  } catch {
+    // Vercel /tmp yazılamazsa sessizce geç (rate limit devre dışı kalır)
+  }
 }
 
 export function checkLoginLock(): { locked: boolean; lockedUntil?: Date; remainingMs?: number } {

@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
+
+export const runtime = "nodejs"
 import { verifyPassword, createSession } from "@/lib/auth"
 import {
   checkLoginLock,
@@ -47,10 +49,15 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    resetFailedAttempts()
+    try {
+      resetFailedAttempts()
+    } catch {
+      // Rate limit sıfırlama başarısız olsa da girişe izin ver
+    }
     await createSession()
     return NextResponse.json({ success: true })
-  } catch {
+  } catch (err) {
+    console.error("[admin/login]", err)
     return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 })
   }
 }

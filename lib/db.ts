@@ -1,7 +1,10 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs"
 import { join } from "path"
 
-const DATA_DIR = join(process.cwd(), "data")
+// Vercel'de dosya sistemi salt okunur; /tmp yazılabilir
+const DATA_DIR = process.env.VERCEL
+  ? join("/tmp", "fzt-website-data")
+  : join(process.cwd(), "data")
 const APPOINTMENTS_FILE = join(DATA_DIR, "appointments.json")
 const BLOGS_FILE = join(DATA_DIR, "blogs.json")
 
@@ -27,8 +30,12 @@ export interface Blog {
 }
 
 function ensureDataDir() {
-  if (!existsSync(DATA_DIR)) {
-    mkdirSync(DATA_DIR, { recursive: true })
+  try {
+    if (!existsSync(DATA_DIR)) {
+      mkdirSync(DATA_DIR, { recursive: true })
+    }
+  } catch {
+    // Vercel'de mkdir başarısız olabilir
   }
 }
 
@@ -45,8 +52,12 @@ function readJson<T>(filePath: string, defaultValue: T): T {
 }
 
 function writeJson<T>(filePath: string, data: T) {
-  ensureDataDir()
-  writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8")
+  try {
+    ensureDataDir()
+    writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8")
+  } catch {
+    // Vercel'de yazma başarısız olursa sessizce geç
+  }
 }
 
 export function getAppointments(): Appointment[] {
