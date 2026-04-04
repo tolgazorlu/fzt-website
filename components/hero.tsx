@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { MapPin, Clock, Phone, ArrowRight, CheckCircle2 } from "lucide-react"
-import type { HomepageContent } from "@/lib/homepage-content/schema"
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { MapPin, Clock, Phone, ArrowRight, CheckCircle2 } from "lucide-react";
+import type { HomepageContent } from "@/lib/homepage-content/schema";
 
 const container = {
   hidden: { opacity: 0 },
@@ -13,7 +13,7 @@ const container = {
     opacity: 1,
     transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
-}
+};
 
 const item = {
   hidden: { opacity: 0, y: 24 },
@@ -22,16 +22,20 @@ const item = {
     y: 0,
     transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] as const },
   },
-}
+};
 
 const photoVariants = {
   hidden: { opacity: 0, x: 40 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] as const, delay: 0.3 },
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.4, 0.25, 1] as const,
+      delay: 0.3,
+    },
   },
-}
+};
 
 export function Hero({ content }: { content: HomepageContent["hero"] }) {
   return (
@@ -66,12 +70,18 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={item} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/8 text-primary text-sm font-semibold mb-8 border border-primary/15">
+            <motion.div
+              variants={item}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/8 text-primary text-sm font-semibold mb-8 border border-primary/15"
+            >
               <CheckCircle2 className="h-4 w-4" />
               {content.badge}
             </motion.div>
 
-            <motion.h1 variants={item} className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-[3.5rem] font-bold text-foreground leading-[1.08] mb-6 tracking-tight">
+            <motion.h1
+              variants={item}
+              className="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-[3.5rem] font-bold text-foreground leading-[1.08] mb-6 tracking-tight"
+            >
               {content.headlineLine1}
               <br />
               <span className="bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
@@ -79,18 +89,34 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
               </span>
             </motion.h1>
 
-            <motion.p variants={item} className="text-lg text-foreground/80 leading-relaxed mb-8 max-w-xl font-medium">
+            <motion.p
+              variants={item}
+              className="text-lg text-foreground/80 leading-relaxed mb-8 max-w-xl font-medium"
+            >
               {content.subtitle}
             </motion.p>
 
-            <motion.p variants={item} className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-xl">
+            <motion.p
+              variants={item}
+              className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-xl"
+            >
               {content.description}
             </motion.p>
 
-            <motion.div variants={item} className="flex flex-col sm:flex-row sm:items-center gap-6">
+            <motion.div
+              variants={item}
+              className="flex flex-col sm:flex-row sm:items-center gap-6"
+            >
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-base px-8 h-14 rounded-xl group font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5 transition-all" asChild>
-                  <Link href={content.primaryCtaHref} className="flex items-center gap-2">
+                <Button
+                  size="lg"
+                  className="text-base px-8 h-14 rounded-xl group font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5 transition-all"
+                  asChild
+                >
+                  <Link
+                    href={content.primaryCtaHref}
+                    className="flex items-center gap-2"
+                  >
                     {content.primaryCtaLabel}
                     <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                   </Link>
@@ -101,7 +127,9 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
                   className="text-base px-8 h-14 rounded-xl border-2 font-medium text-foreground hover:bg-primary/5 hover:border-primary/30 hover:text-foreground"
                   asChild
                 >
-                  <Link href={content.secondaryCtaHref}>{content.secondaryCtaLabel}</Link>
+                  <Link href={content.secondaryCtaHref}>
+                    {content.secondaryCtaLabel}
+                  </Link>
                 </Button>
               </div>
               <a
@@ -115,7 +143,10 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
               </a>
             </motion.div>
 
-            <motion.div variants={item} className="mt-12 pt-8 border-t border-border/60 flex flex-wrap gap-6 text-sm text-muted-foreground">
+            <motion.div
+              variants={item}
+              className="mt-12 pt-8 border-t border-border/60 flex flex-wrap gap-6 text-sm text-muted-foreground"
+            >
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />
                 <span>{content.locationLine}</span>
@@ -139,7 +170,7 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
                   src={content.imageSrc}
                   alt={content.imageAlt}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
@@ -147,8 +178,12 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
               </div>
               <div className="absolute -bottom-4 -right-4 -z-10 w-full h-full rounded-2xl bg-primary/10" />
               <div className="absolute -left-4 -bottom-4 lg:left-0 lg:bottom-8 bg-card rounded-xl p-4 shadow-xl border border-border/50 shadow-primary/5">
-                <p className="text-xs font-medium text-muted-foreground mb-1">{content.floatingCardLabel}</p>
-                <p className="text-sm font-semibold text-foreground">{content.floatingCardText}</p>
+                <p className="text-xs font-medium text-muted-foreground mb-1">
+                  {content.floatingCardLabel}
+                </p>
+                <p className="text-sm font-semibold text-foreground">
+                  {content.floatingCardText}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -157,12 +192,14 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
         <div className="flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-xs text-muted-foreground/70 font-medium tracking-wider uppercase">{content.scrollHint}</span>
+          <span className="text-xs text-muted-foreground/70 font-medium tracking-wider uppercase">
+            {content.scrollHint}
+          </span>
           <div className="w-6 h-10 border-2 border-muted-foreground/20 rounded-full flex justify-center pt-2">
             <div className="w-1 h-3 bg-muted-foreground/40 rounded-full" />
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

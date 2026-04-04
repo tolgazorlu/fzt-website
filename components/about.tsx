@@ -25,7 +25,7 @@ export function About({ content }: { content: HomepageContent["about"] }) {
                 src={content.imageSrc}
                 alt={content.imageAlt}
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
           </motion.div>
