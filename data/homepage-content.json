@@ -1,0 +1,1050 @@
+{
+  "tr": {
+    "header": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Fizyoterapi ve Rehabilitasyon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "ctaLabel": "Randevu Al",
+      "ctaHref": "#iletisim",
+      "nav": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ]
+    },
+    "hero": {
+      "badge": "Uluslararası Deneyim · Beylikdüzü",
+      "headlineLine1": "Fizyoterapi ve Rehabilitasyonda",
+      "headlineAccent": "Profesyonel Çözüm",
+      "subtitle": "Fzt. İlimdar Taştanoğlu",
+      "description": "Almanya'da edindiğim klinik deneyim ve spor fizyoterapisi alanında devam eden yüksek lisans eğitimim doğrultusunda, bireye özgü fizyoterapi ve rehabilitasyon hizmetleri sunulmaktadır. Uygulamalar, güncel bilimsel yaklaşımlar çerçevesinde planlanmaktadır.",
+      "primaryCtaLabel": "Randevu Al",
+      "primaryCtaHref": "#iletisim",
+      "secondaryCtaLabel": "Hizmetlerimiz",
+      "secondaryCtaHref": "#hizmetler",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "locationLine": "Kubist Park Residence, Beylikdüzü",
+      "hoursLine": "Pzt-Cmt: 09:00-20:00",
+      "imageSrc": "/ilimdartastanoglu.png",
+      "imageAlt": "Fzt. İlimdar Taştanoğlu - Fizyoterapist",
+      "floatingCardLabel": "Uzmanlık",
+      "floatingCardText": "Manuel Terapi · Spor Fizyoterapisi",
+      "scrollHint": "Keşfet"
+    },
+    "stats": {
+      "badge": "Neden Biz",
+      "title": "Uzmanlık Alanlarım",
+      "items": [
+        {
+          "icon": "Users",
+          "label": "Bireysel Değerlendirme",
+          "description": "Her danışana özel değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanır."
+        },
+        {
+          "icon": "GraduationCap",
+          "label": "Uluslararası Deneyim",
+          "description": "Bezmialem Vakıf Üniversitesi (lisans) ve Almanya'da Physiocorpus (Köln) mesleki deneyimi."
+        },
+        {
+          "icon": "TrendingUp",
+          "label": "Spor Fizyoterapisi",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik uzmanlık."
+        },
+        {
+          "icon": "Award",
+          "label": "Avrupa Teknikleri",
+          "description": "Manuel terapi, medikal masaj ve kişiye özel egzersiz programlarıyla bilimsel yaklaşım."
+        }
+      ]
+    },
+    "services": {
+      "badge": "Profesyonel Çözümler",
+      "title": "Uzmanlık Alanları",
+      "subtitle": "Randevu sistemi ile sunulan, bireysel değerlendirme sonrası kişiye özel fizyoterapi hizmetleri",
+      "items": [
+        {
+          "icon": "Activity",
+          "title": "Fizyoterapi ve Rehabilitasyon",
+          "description": "Kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrısı, omuz ve diz problemleri gibi durumlara yönelik değerlendirme ve uygulamalar yapılmaktadır.",
+          "details": [
+            "Bireysel değerlendirme",
+            "Kişiye özel egzersiz programları",
+            "Hareket fonksiyonlarının desteklenmesi"
+          ]
+        },
+        {
+          "icon": "Hand",
+          "title": "Manuel Terapi",
+          "description": "Eklem mobilizasyonu ve yumuşak doku teknikleriyle ağrı ve hareket kısıtlılıklarında destek sağlanır; uygulamalar bilimsel yaklaşımla planlanır.",
+          "details": [
+            "Eklem mobilizasyonu",
+            "Yumuşak doku teknikleri",
+            "Kişiye özel uygulama"
+          ]
+        },
+        {
+          "icon": "Bone",
+          "title": "Spor Yaralanmaları",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik fizyoterapi yaklaşımları uygulanmaktadır.",
+          "details": [
+            "Ön çapraz bağ (ACL) yaralanmaları",
+            "Menisküs yaralanmaları",
+            "Kas ve bağ (ligament) yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Dumbbell",
+          "title": "Kişiye Özel Egzersiz",
+          "description": "Değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanarak hareket fonksiyonlarının desteklenmesi amaçlanır.",
+          "details": [
+            "Bel ve boyun fıtıkları",
+            "Diz ağrısı ve diz problemleri",
+            "Omuz ağrısı ve omuz yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Brain",
+          "title": "Medikal Masaj",
+          "description": "Ağrı yönetimi ve doku iyileşmesini desteklemek üzere medikal masaj uygulamaları, güncel yaklaşımlar çerçevesinde uygulanmaktadır.",
+          "details": [
+            "Fibromiyalji",
+            "Tendinit ve aşırı kullanım yaralanmaları",
+            "Kas-iskelet kaynaklı ağrı"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Nörolojik Rehabilitasyon",
+          "description": "Parkinson hastalığı ve hareket fonksiyonları üzerinde etkili olan durumlara yönelik değerlendirme ve rehabilitasyon uygulamaları.",
+          "details": [
+            "Parkinson hastalığı",
+            "Hareket fonksiyonlarının desteklenmesi",
+            "Günlük yaşam aktiviteleri"
+          ]
+        }
+      ]
+    },
+    "about": {
+      "badge": "Hakkımda",
+      "title": "Fzt. İlimdar Taştanoğlu",
+      "paragraphs": [
+        "Almanya'da edindiğim mesleki deneyimin ardından, Türkiye'de fizyoterapi hizmeti sunmaktayım. Spor fizyoterapisi alanında yüksek lisans eğitimime devam etmekteyim.",
+        "Danışanların bireysel ihtiyaçları doğrultusunda; manuel terapi, medikal masaj ve kişiye özel egzersiz programları uygulanmaktadır. Amaç, hareket fonksiyonlarının desteklenmesi ve günlük yaşam aktivitelerinin iyileştirilmesidir.",
+        "Özel Sağlık Meslek Hizmet Birimi kapsamında; kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrıları, omuz ve diz problemlerine yönelik değerlendirme ve fizyoterapi uygulamaları gerçekleştirilmektedir. Hizmetler randevu sistemi ile sunulmaktadır."
+      ],
+      "achievements": [
+        "Bezmialem Vakıf Üniversitesi (lisans)",
+        "Spor Fizyoterapisi Yüksek Lisans (devam ediyor)",
+        "Physiocorpus, Köln, Almanya — mesleki deneyim",
+        "Manuel Terapi",
+        "Medikal Masaj",
+        "Kişiye Özel Egzersiz Programları"
+      ],
+      "interestTitle": "İlgi Alanları",
+      "interestAreas": [
+        "Omuz Ağrısı ve Omuz Yaralanmaları",
+        "Bel ve Boyun Fıtıkları",
+        "Diz Ağrısı ve Diz Problemleri",
+        "Ön Çapraz Bağ (ACL) Yaralanmaları",
+        "Menisküs Yaralanmaları",
+        "Kas ve Bağ (Ligament) Yaralanmaları",
+        "Tendinit ve Aşırı Kullanım Yaralanmaları",
+        "Fibromiyalji",
+        "Parkinson Hastalığı"
+      ],
+      "imageSrc": "/ilimdar-hakkimda.png",
+      "imageAlt": "Fizyoterapist İlimdar Taştanoğlu"
+    },
+    "contact": {
+      "badge": "İletişim",
+      "title": "Randevu ve Bilgi İçin",
+      "intro": "Sorularınız için bize ulaşın veya randevu almak için formu doldurun. En kısa sürede size dönüş yapacağız.",
+      "phoneTitle": "Telefon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "appointmentTitle": "Randevu",
+      "appointmentText": "Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.",
+      "addressTitle": "Adres",
+      "addressText": "Kubist Park Residence, Adnan Kahveci, Avrupa Cd. no:108 / Daire:370\n34528 Beylikdüzü/İstanbul",
+      "hoursTitle": "Çalışma Saatleri",
+      "hoursText": "Pazartesi - Cumartesi: 09:00 - 20:00\nPazar: Kapalı",
+      "socialTitle": "Sosyal Medya",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "formTitle": "Bilgilerinizi Bırakın",
+      "formSubtitle": "Biz sizi arayalım",
+      "formSuccessTitle": "Mesajınız Alındı!",
+      "formSuccessText": "En kısa sürede sizinle iletişime geçeceğiz.",
+      "privacyNote": "Kişisel verileriniz sizinle irtibat kurmak için alınmakta ve işlenmektedir.",
+      "mapEmbedSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.13!2d28.625225528835433!3d41.00817107692577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjQiTiAyOMKwMzcnMzAuOCJF!5e0!3m2!1str!2str!5m2!1str!2str"
+    },
+    "footer": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Özel Sağlık Meslek Hizmet Birimi",
+      "description": "Fizyoterapi ve rehabilitasyon hizmetleri. Randevu sistemi ile hizmet verilmektedir.",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "addressBlock": "Kubist Park Residence,\nAdnan Kahveci, Avrupa Cd. no:108 / Daire:370,\n34528 Beylikdüzü/İstanbul",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "quickLinks": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ],
+      "serviceLinks": [
+        {
+          "href": "#hizmetler",
+          "label": "Fizyoterapi ve Rehabilitasyon"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Manuel Terapi"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Spor Yaralanmaları"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Medikal Masaj"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Kişiye Özel Egzersiz"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Nörolojik Rehabilitasyon"
+        }
+      ],
+      "copyrightSuffix": "Özel Sağlık Meslek Hizmet Birimi. Tüm hakları saklıdır.",
+      "privacyLabel": "Gizlilik Politikası",
+      "privacyHref": "#",
+      "kvkkLabel": "KVKK Aydınlatma Metni",
+      "kvkkHref": "#"
+    }
+  },
+  "en": {
+    "header": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Fizyoterapi ve Rehabilitasyon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "ctaLabel": "Randevu Al",
+      "ctaHref": "#iletisim",
+      "nav": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ]
+    },
+    "hero": {
+      "badge": "Uluslararası Deneyim · Beylikdüzü",
+      "headlineLine1": "Fizyoterapi ve Rehabilitasyonda",
+      "headlineAccent": "Profesyonel Çözüm",
+      "subtitle": "Fzt. İlimdar Taştanoğlu",
+      "description": "Almanya'da edindiğim klinik deneyim ve spor fizyoterapisi alanında devam eden yüksek lisans eğitimim doğrultusunda, bireye özgü fizyoterapi ve rehabilitasyon hizmetleri sunulmaktadır. Uygulamalar, güncel bilimsel yaklaşımlar çerçevesinde planlanmaktadır.",
+      "primaryCtaLabel": "Randevu Al",
+      "primaryCtaHref": "#iletisim",
+      "secondaryCtaLabel": "Hizmetlerimiz",
+      "secondaryCtaHref": "#hizmetler",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "locationLine": "Kubist Park Residence, Beylikdüzü",
+      "hoursLine": "Pzt-Cmt: 09:00-20:00",
+      "imageSrc": "/ilimdartastanoglu.png",
+      "imageAlt": "Fzt. İlimdar Taştanoğlu - Fizyoterapist",
+      "floatingCardLabel": "Uzmanlık",
+      "floatingCardText": "Manuel Terapi · Spor Fizyoterapisi",
+      "scrollHint": "Keşfet"
+    },
+    "stats": {
+      "badge": "Neden Biz",
+      "title": "Uzmanlık Alanlarım",
+      "items": [
+        {
+          "icon": "Users",
+          "label": "Bireysel Değerlendirme",
+          "description": "Her danışana özel değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanır."
+        },
+        {
+          "icon": "GraduationCap",
+          "label": "Uluslararası Deneyim",
+          "description": "Bezmialem Vakıf Üniversitesi (lisans) ve Almanya'da Physiocorpus (Köln) mesleki deneyimi."
+        },
+        {
+          "icon": "TrendingUp",
+          "label": "Spor Fizyoterapisi",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik uzmanlık."
+        },
+        {
+          "icon": "Award",
+          "label": "Avrupa Teknikleri",
+          "description": "Manuel terapi, medikal masaj ve kişiye özel egzersiz programlarıyla bilimsel yaklaşım."
+        }
+      ]
+    },
+    "services": {
+      "badge": "Profesyonel Çözümler",
+      "title": "Uzmanlık Alanları",
+      "subtitle": "Randevu sistemi ile sunulan, bireysel değerlendirme sonrası kişiye özel fizyoterapi hizmetleri",
+      "items": [
+        {
+          "icon": "Activity",
+          "title": "Fizyoterapi ve Rehabilitasyon",
+          "description": "Kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrısı, omuz ve diz problemleri gibi durumlara yönelik değerlendirme ve uygulamalar yapılmaktadır.",
+          "details": [
+            "Bireysel değerlendirme",
+            "Kişiye özel egzersiz programları",
+            "Hareket fonksiyonlarının desteklenmesi"
+          ]
+        },
+        {
+          "icon": "Hand",
+          "title": "Manuel Terapi",
+          "description": "Eklem mobilizasyonu ve yumuşak doku teknikleriyle ağrı ve hareket kısıtlılıklarında destek sağlanır; uygulamalar bilimsel yaklaşımla planlanır.",
+          "details": [
+            "Eklem mobilizasyonu",
+            "Yumuşak doku teknikleri",
+            "Kişiye özel uygulama"
+          ]
+        },
+        {
+          "icon": "Bone",
+          "title": "Spor Yaralanmaları",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik fizyoterapi yaklaşımları uygulanmaktadır.",
+          "details": [
+            "Ön çapraz bağ (ACL) yaralanmaları",
+            "Menisküs yaralanmaları",
+            "Kas ve bağ (ligament) yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Dumbbell",
+          "title": "Kişiye Özel Egzersiz",
+          "description": "Değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanarak hareket fonksiyonlarının desteklenmesi amaçlanır.",
+          "details": [
+            "Bel ve boyun fıtıkları",
+            "Diz ağrısı ve diz problemleri",
+            "Omuz ağrısı ve omuz yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Brain",
+          "title": "Medikal Masaj",
+          "description": "Ağrı yönetimi ve doku iyileşmesini desteklemek üzere medikal masaj uygulamaları, güncel yaklaşımlar çerçevesinde uygulanmaktadır.",
+          "details": [
+            "Fibromiyalji",
+            "Tendinit ve aşırı kullanım yaralanmaları",
+            "Kas-iskelet kaynaklı ağrı"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Nörolojik Rehabilitasyon",
+          "description": "Parkinson hastalığı ve hareket fonksiyonları üzerinde etkili olan durumlara yönelik değerlendirme ve rehabilitasyon uygulamaları.",
+          "details": [
+            "Parkinson hastalığı",
+            "Hareket fonksiyonlarının desteklenmesi",
+            "Günlük yaşam aktiviteleri"
+          ]
+        }
+      ]
+    },
+    "about": {
+      "badge": "Hakkımda",
+      "title": "Fzt. İlimdar Taştanoğlu",
+      "paragraphs": [
+        "Almanya'da edindiğim mesleki deneyimin ardından, Türkiye'de fizyoterapi hizmeti sunmaktayım. Spor fizyoterapisi alanında yüksek lisans eğitimime devam etmekteyim.",
+        "Danışanların bireysel ihtiyaçları doğrultusunda; manuel terapi, medikal masaj ve kişiye özel egzersiz programları uygulanmaktadır. Amaç, hareket fonksiyonlarının desteklenmesi ve günlük yaşam aktivitelerinin iyileştirilmesidir.",
+        "Özel Sağlık Meslek Hizmet Birimi kapsamında; kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrıları, omuz ve diz problemlerine yönelik değerlendirme ve fizyoterapi uygulamaları gerçekleştirilmektedir. Hizmetler randevu sistemi ile sunulmaktadır."
+      ],
+      "achievements": [
+        "Bezmialem Vakıf Üniversitesi (lisans)",
+        "Spor Fizyoterapisi Yüksek Lisans (devam ediyor)",
+        "Physiocorpus, Köln, Almanya — mesleki deneyim",
+        "Manuel Terapi",
+        "Medikal Masaj",
+        "Kişiye Özel Egzersiz Programları"
+      ],
+      "interestTitle": "İlgi Alanları",
+      "interestAreas": [
+        "Omuz Ağrısı ve Omuz Yaralanmaları",
+        "Bel ve Boyun Fıtıkları",
+        "Diz Ağrısı ve Diz Problemleri",
+        "Ön Çapraz Bağ (ACL) Yaralanmaları",
+        "Menisküs Yaralanmaları",
+        "Kas ve Bağ (Ligament) Yaralanmaları",
+        "Tendinit ve Aşırı Kullanım Yaralanmaları",
+        "Fibromiyalji",
+        "Parkinson Hastalığı"
+      ],
+      "imageSrc": "/ilimdar-hakkimda.png",
+      "imageAlt": "Fizyoterapist İlimdar Taştanoğlu"
+    },
+    "contact": {
+      "badge": "İletişim",
+      "title": "Randevu ve Bilgi İçin",
+      "intro": "Sorularınız için bize ulaşın veya randevu almak için formu doldurun. En kısa sürede size dönüş yapacağız.",
+      "phoneTitle": "Telefon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "appointmentTitle": "Randevu",
+      "appointmentText": "Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.",
+      "addressTitle": "Adres",
+      "addressText": "Kubist Park Residence, Adnan Kahveci, Avrupa Cd. no:108 / Daire:370\n34528 Beylikdüzü/İstanbul",
+      "hoursTitle": "Çalışma Saatleri",
+      "hoursText": "Pazartesi - Cumartesi: 09:00 - 20:00\nPazar: Kapalı",
+      "socialTitle": "Sosyal Medya",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "formTitle": "Bilgilerinizi Bırakın",
+      "formSubtitle": "Biz sizi arayalım",
+      "formSuccessTitle": "Mesajınız Alındı!",
+      "formSuccessText": "En kısa sürede sizinle iletişime geçeceğiz.",
+      "privacyNote": "Kişisel verileriniz sizinle irtibat kurmak için alınmakta ve işlenmektedir.",
+      "mapEmbedSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.13!2d28.625225528835433!3d41.00817107692577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjQiTiAyOMKwMzcnMzAuOCJF!5e0!3m2!1str!2str!5m2!1str!2str"
+    },
+    "footer": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Özel Sağlık Meslek Hizmet Birimi",
+      "description": "Fizyoterapi ve rehabilitasyon hizmetleri. Randevu sistemi ile hizmet verilmektedir.",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "addressBlock": "Kubist Park Residence,\nAdnan Kahveci, Avrupa Cd. no:108 / Daire:370,\n34528 Beylikdüzü/İstanbul",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "quickLinks": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ],
+      "serviceLinks": [
+        {
+          "href": "#hizmetler",
+          "label": "Fizyoterapi ve Rehabilitasyon"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Manuel Terapi"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Spor Yaralanmaları"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Medikal Masaj"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Kişiye Özel Egzersiz"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Nörolojik Rehabilitasyon"
+        }
+      ],
+      "copyrightSuffix": "Özel Sağlık Meslek Hizmet Birimi. Tüm hakları saklıdır.",
+      "privacyLabel": "Gizlilik Politikası",
+      "privacyHref": "#",
+      "kvkkLabel": "KVKK Aydınlatma Metni",
+      "kvkkHref": "#"
+    }
+  },
+  "de": {
+    "header": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Fizyoterapi ve Rehabilitasyon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "ctaLabel": "Randevu Al",
+      "ctaHref": "#iletisim",
+      "nav": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ]
+    },
+    "hero": {
+      "badge": "Uluslararası Deneyim · Beylikdüzü",
+      "headlineLine1": "Fizyoterapi ve Rehabilitasyonda",
+      "headlineAccent": "Profesyonel Çözüm",
+      "subtitle": "Fzt. İlimdar Taştanoğlu",
+      "description": "Almanya'da edindiğim klinik deneyim ve spor fizyoterapisi alanında devam eden yüksek lisans eğitimim doğrultusunda, bireye özgü fizyoterapi ve rehabilitasyon hizmetleri sunulmaktadır. Uygulamalar, güncel bilimsel yaklaşımlar çerçevesinde planlanmaktadır.",
+      "primaryCtaLabel": "Randevu Al",
+      "primaryCtaHref": "#iletisim",
+      "secondaryCtaLabel": "Hizmetlerimiz",
+      "secondaryCtaHref": "#hizmetler",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "locationLine": "Kubist Park Residence, Beylikdüzü",
+      "hoursLine": "Pzt-Cmt: 09:00-20:00",
+      "imageSrc": "/ilimdartastanoglu.png",
+      "imageAlt": "Fzt. İlimdar Taştanoğlu - Fizyoterapist",
+      "floatingCardLabel": "Uzmanlık",
+      "floatingCardText": "Manuel Terapi · Spor Fizyoterapisi",
+      "scrollHint": "Keşfet"
+    },
+    "stats": {
+      "badge": "Neden Biz",
+      "title": "Uzmanlık Alanlarım",
+      "items": [
+        {
+          "icon": "Users",
+          "label": "Bireysel Değerlendirme",
+          "description": "Her danışana özel değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanır."
+        },
+        {
+          "icon": "GraduationCap",
+          "label": "Uluslararası Deneyim",
+          "description": "Bezmialem Vakıf Üniversitesi (lisans) ve Almanya'da Physiocorpus (Köln) mesleki deneyimi."
+        },
+        {
+          "icon": "TrendingUp",
+          "label": "Spor Fizyoterapisi",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik uzmanlık."
+        },
+        {
+          "icon": "Award",
+          "label": "Avrupa Teknikleri",
+          "description": "Manuel terapi, medikal masaj ve kişiye özel egzersiz programlarıyla bilimsel yaklaşım."
+        }
+      ]
+    },
+    "services": {
+      "badge": "Profesyonel Çözümler",
+      "title": "Uzmanlık Alanları",
+      "subtitle": "Randevu sistemi ile sunulan, bireysel değerlendirme sonrası kişiye özel fizyoterapi hizmetleri",
+      "items": [
+        {
+          "icon": "Activity",
+          "title": "Fizyoterapi ve Rehabilitasyon",
+          "description": "Kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrısı, omuz ve diz problemleri gibi durumlara yönelik değerlendirme ve uygulamalar yapılmaktadır.",
+          "details": [
+            "Bireysel değerlendirme",
+            "Kişiye özel egzersiz programları",
+            "Hareket fonksiyonlarının desteklenmesi"
+          ]
+        },
+        {
+          "icon": "Hand",
+          "title": "Manuel Terapi",
+          "description": "Eklem mobilizasyonu ve yumuşak doku teknikleriyle ağrı ve hareket kısıtlılıklarında destek sağlanır; uygulamalar bilimsel yaklaşımla planlanır.",
+          "details": [
+            "Eklem mobilizasyonu",
+            "Yumuşak doku teknikleri",
+            "Kişiye özel uygulama"
+          ]
+        },
+        {
+          "icon": "Bone",
+          "title": "Spor Yaralanmaları",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik fizyoterapi yaklaşımları uygulanmaktadır.",
+          "details": [
+            "Ön çapraz bağ (ACL) yaralanmaları",
+            "Menisküs yaralanmaları",
+            "Kas ve bağ (ligament) yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Dumbbell",
+          "title": "Kişiye Özel Egzersiz",
+          "description": "Değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanarak hareket fonksiyonlarının desteklenmesi amaçlanır.",
+          "details": [
+            "Bel ve boyun fıtıkları",
+            "Diz ağrısı ve diz problemleri",
+            "Omuz ağrısı ve omuz yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Brain",
+          "title": "Medikal Masaj",
+          "description": "Ağrı yönetimi ve doku iyileşmesini desteklemek üzere medikal masaj uygulamaları, güncel yaklaşımlar çerçevesinde uygulanmaktadır.",
+          "details": [
+            "Fibromiyalji",
+            "Tendinit ve aşırı kullanım yaralanmaları",
+            "Kas-iskelet kaynaklı ağrı"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Nörolojik Rehabilitasyon",
+          "description": "Parkinson hastalığı ve hareket fonksiyonları üzerinde etkili olan durumlara yönelik değerlendirme ve rehabilitasyon uygulamaları.",
+          "details": [
+            "Parkinson hastalığı",
+            "Hareket fonksiyonlarının desteklenmesi",
+            "Günlük yaşam aktiviteleri"
+          ]
+        }
+      ]
+    },
+    "about": {
+      "badge": "Hakkımda",
+      "title": "Fzt. İlimdar Taştanoğlu",
+      "paragraphs": [
+        "Almanya'da edindiğim mesleki deneyimin ardından, Türkiye'de fizyoterapi hizmeti sunmaktayım. Spor fizyoterapisi alanında yüksek lisans eğitimime devam etmekteyim.",
+        "Danışanların bireysel ihtiyaçları doğrultusunda; manuel terapi, medikal masaj ve kişiye özel egzersiz programları uygulanmaktadır. Amaç, hareket fonksiyonlarının desteklenmesi ve günlük yaşam aktivitelerinin iyileştirilmesidir.",
+        "Özel Sağlık Meslek Hizmet Birimi kapsamında; kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrıları, omuz ve diz problemlerine yönelik değerlendirme ve fizyoterapi uygulamaları gerçekleştirilmektedir. Hizmetler randevu sistemi ile sunulmaktadır."
+      ],
+      "achievements": [
+        "Bezmialem Vakıf Üniversitesi (lisans)",
+        "Spor Fizyoterapisi Yüksek Lisans (devam ediyor)",
+        "Physiocorpus, Köln, Almanya — mesleki deneyim",
+        "Manuel Terapi",
+        "Medikal Masaj",
+        "Kişiye Özel Egzersiz Programları"
+      ],
+      "interestTitle": "İlgi Alanları",
+      "interestAreas": [
+        "Omuz Ağrısı ve Omuz Yaralanmaları",
+        "Bel ve Boyun Fıtıkları",
+        "Diz Ağrısı ve Diz Problemleri",
+        "Ön Çapraz Bağ (ACL) Yaralanmaları",
+        "Menisküs Yaralanmaları",
+        "Kas ve Bağ (Ligament) Yaralanmaları",
+        "Tendinit ve Aşırı Kullanım Yaralanmaları",
+        "Fibromiyalji",
+        "Parkinson Hastalığı"
+      ],
+      "imageSrc": "/ilimdar-hakkimda.png",
+      "imageAlt": "Fizyoterapist İlimdar Taştanoğlu"
+    },
+    "contact": {
+      "badge": "İletişim",
+      "title": "Randevu ve Bilgi İçin",
+      "intro": "Sorularınız için bize ulaşın veya randevu almak için formu doldurun. En kısa sürede size dönüş yapacağız.",
+      "phoneTitle": "Telefon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "appointmentTitle": "Randevu",
+      "appointmentText": "Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.",
+      "addressTitle": "Adres",
+      "addressText": "Kubist Park Residence, Adnan Kahveci, Avrupa Cd. no:108 / Daire:370\n34528 Beylikdüzü/İstanbul",
+      "hoursTitle": "Çalışma Saatleri",
+      "hoursText": "Pazartesi - Cumartesi: 09:00 - 20:00\nPazar: Kapalı",
+      "socialTitle": "Sosyal Medya",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "formTitle": "Bilgilerinizi Bırakın",
+      "formSubtitle": "Biz sizi arayalım",
+      "formSuccessTitle": "Mesajınız Alındı!",
+      "formSuccessText": "En kısa sürede sizinle iletişime geçeceğiz.",
+      "privacyNote": "Kişisel verileriniz sizinle irtibat kurmak için alınmakta ve işlenmektedir.",
+      "mapEmbedSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.13!2d28.625225528835433!3d41.00817107692577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjQiTiAyOMKwMzcnMzAuOCJF!5e0!3m2!1str!2str!5m2!1str!2str"
+    },
+    "footer": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Özel Sağlık Meslek Hizmet Birimi",
+      "description": "Fizyoterapi ve rehabilitasyon hizmetleri. Randevu sistemi ile hizmet verilmektedir.",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "addressBlock": "Kubist Park Residence,\nAdnan Kahveci, Avrupa Cd. no:108 / Daire:370,\n34528 Beylikdüzü/İstanbul",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "quickLinks": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ],
+      "serviceLinks": [
+        {
+          "href": "#hizmetler",
+          "label": "Fizyoterapi ve Rehabilitasyon"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Manuel Terapi"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Spor Yaralanmaları"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Medikal Masaj"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Kişiye Özel Egzersiz"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Nörolojik Rehabilitasyon"
+        }
+      ],
+      "copyrightSuffix": "Özel Sağlık Meslek Hizmet Birimi. Tüm hakları saklıdır.",
+      "privacyLabel": "Gizlilik Politikası",
+      "privacyHref": "#",
+      "kvkkLabel": "KVKK Aydınlatma Metni",
+      "kvkkHref": "#"
+    }
+  },
+  "ar": {
+    "header": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Fizyoterapi ve Rehabilitasyon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "ctaLabel": "Randevu Al",
+      "ctaHref": "#iletisim",
+      "nav": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ]
+    },
+    "hero": {
+      "badge": "Uluslararası Deneyim · Beylikdüzü",
+      "headlineLine1": "Fizyoterapi ve Rehabilitasyonda",
+      "headlineAccent": "Profesyonel Çözüm",
+      "subtitle": "Fzt. İlimdar Taştanoğlu",
+      "description": "Almanya'da edindiğim klinik deneyim ve spor fizyoterapisi alanında devam eden yüksek lisans eğitimim doğrultusunda, bireye özgü fizyoterapi ve rehabilitasyon hizmetleri sunulmaktadır. Uygulamalar, güncel bilimsel yaklaşımlar çerçevesinde planlanmaktadır.",
+      "primaryCtaLabel": "Randevu Al",
+      "primaryCtaHref": "#iletisim",
+      "secondaryCtaLabel": "Hizmetlerimiz",
+      "secondaryCtaHref": "#hizmetler",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "locationLine": "Kubist Park Residence, Beylikdüzü",
+      "hoursLine": "Pzt-Cmt: 09:00-20:00",
+      "imageSrc": "/ilimdartastanoglu.png",
+      "imageAlt": "Fzt. İlimdar Taştanoğlu - Fizyoterapist",
+      "floatingCardLabel": "Uzmanlık",
+      "floatingCardText": "Manuel Terapi · Spor Fizyoterapisi",
+      "scrollHint": "Keşfet"
+    },
+    "stats": {
+      "badge": "Neden Biz",
+      "title": "Uzmanlık Alanlarım",
+      "items": [
+        {
+          "icon": "Users",
+          "label": "Bireysel Değerlendirme",
+          "description": "Her danışana özel değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanır."
+        },
+        {
+          "icon": "GraduationCap",
+          "label": "Uluslararası Deneyim",
+          "description": "Bezmialem Vakıf Üniversitesi (lisans) ve Almanya'da Physiocorpus (Köln) mesleki deneyimi."
+        },
+        {
+          "icon": "TrendingUp",
+          "label": "Spor Fizyoterapisi",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik uzmanlık."
+        },
+        {
+          "icon": "Award",
+          "label": "Avrupa Teknikleri",
+          "description": "Manuel terapi, medikal masaj ve kişiye özel egzersiz programlarıyla bilimsel yaklaşım."
+        }
+      ]
+    },
+    "services": {
+      "badge": "Profesyonel Çözümler",
+      "title": "Uzmanlık Alanları",
+      "subtitle": "Randevu sistemi ile sunulan, bireysel değerlendirme sonrası kişiye özel fizyoterapi hizmetleri",
+      "items": [
+        {
+          "icon": "Activity",
+          "title": "Fizyoterapi ve Rehabilitasyon",
+          "description": "Kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrısı, omuz ve diz problemleri gibi durumlara yönelik değerlendirme ve uygulamalar yapılmaktadır.",
+          "details": [
+            "Bireysel değerlendirme",
+            "Kişiye özel egzersiz programları",
+            "Hareket fonksiyonlarının desteklenmesi"
+          ]
+        },
+        {
+          "icon": "Hand",
+          "title": "Manuel Terapi",
+          "description": "Eklem mobilizasyonu ve yumuşak doku teknikleriyle ağrı ve hareket kısıtlılıklarında destek sağlanır; uygulamalar bilimsel yaklaşımla planlanır.",
+          "details": [
+            "Eklem mobilizasyonu",
+            "Yumuşak doku teknikleri",
+            "Kişiye özel uygulama"
+          ]
+        },
+        {
+          "icon": "Bone",
+          "title": "Spor Yaralanmaları",
+          "description": "Sporcularda performans ve sakatlanma sonrası rehabilitasyon süreçlerine yönelik fizyoterapi yaklaşımları uygulanmaktadır.",
+          "details": [
+            "Ön çapraz bağ (ACL) yaralanmaları",
+            "Menisküs yaralanmaları",
+            "Kas ve bağ (ligament) yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Dumbbell",
+          "title": "Kişiye Özel Egzersiz",
+          "description": "Değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanarak hareket fonksiyonlarının desteklenmesi amaçlanır.",
+          "details": [
+            "Bel ve boyun fıtıkları",
+            "Diz ağrısı ve diz problemleri",
+            "Omuz ağrısı ve omuz yaralanmaları"
+          ]
+        },
+        {
+          "icon": "Brain",
+          "title": "Medikal Masaj",
+          "description": "Ağrı yönetimi ve doku iyileşmesini desteklemek üzere medikal masaj uygulamaları, güncel yaklaşımlar çerçevesinde uygulanmaktadır.",
+          "details": [
+            "Fibromiyalji",
+            "Tendinit ve aşırı kullanım yaralanmaları",
+            "Kas-iskelet kaynaklı ağrı"
+          ]
+        },
+        {
+          "icon": "Heart",
+          "title": "Nörolojik Rehabilitasyon",
+          "description": "Parkinson hastalığı ve hareket fonksiyonları üzerinde etkili olan durumlara yönelik değerlendirme ve rehabilitasyon uygulamaları.",
+          "details": [
+            "Parkinson hastalığı",
+            "Hareket fonksiyonlarının desteklenmesi",
+            "Günlük yaşam aktiviteleri"
+          ]
+        }
+      ]
+    },
+    "about": {
+      "badge": "Hakkımda",
+      "title": "Fzt. İlimdar Taştanoğlu",
+      "paragraphs": [
+        "Almanya'da edindiğim mesleki deneyimin ardından, Türkiye'de fizyoterapi hizmeti sunmaktayım. Spor fizyoterapisi alanında yüksek lisans eğitimime devam etmekteyim.",
+        "Danışanların bireysel ihtiyaçları doğrultusunda; manuel terapi, medikal masaj ve kişiye özel egzersiz programları uygulanmaktadır. Amaç, hareket fonksiyonlarının desteklenmesi ve günlük yaşam aktivitelerinin iyileştirilmesidir.",
+        "Özel Sağlık Meslek Hizmet Birimi kapsamında; kas-iskelet sistemi rahatsızlıkları, spor yaralanmaları, bel ve boyun ağrıları, omuz ve diz problemlerine yönelik değerlendirme ve fizyoterapi uygulamaları gerçekleştirilmektedir. Hizmetler randevu sistemi ile sunulmaktadır."
+      ],
+      "achievements": [
+        "Bezmialem Vakıf Üniversitesi (lisans)",
+        "Spor Fizyoterapisi Yüksek Lisans (devam ediyor)",
+        "Physiocorpus, Köln, Almanya — mesleki deneyim",
+        "Manuel Terapi",
+        "Medikal Masaj",
+        "Kişiye Özel Egzersiz Programları"
+      ],
+      "interestTitle": "İlgi Alanları",
+      "interestAreas": [
+        "Omuz Ağrısı ve Omuz Yaralanmaları",
+        "Bel ve Boyun Fıtıkları",
+        "Diz Ağrısı ve Diz Problemleri",
+        "Ön Çapraz Bağ (ACL) Yaralanmaları",
+        "Menisküs Yaralanmaları",
+        "Kas ve Bağ (Ligament) Yaralanmaları",
+        "Tendinit ve Aşırı Kullanım Yaralanmaları",
+        "Fibromiyalji",
+        "Parkinson Hastalığı"
+      ],
+      "imageSrc": "/ilimdar-hakkimda.png",
+      "imageAlt": "Fizyoterapist İlimdar Taştanoğlu"
+    },
+    "contact": {
+      "badge": "İletişim",
+      "title": "Randevu ve Bilgi İçin",
+      "intro": "Sorularınız için bize ulaşın veya randevu almak için formu doldurun. En kısa sürede size dönüş yapacağız.",
+      "phoneTitle": "Telefon",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "appointmentTitle": "Randevu",
+      "appointmentText": "Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.",
+      "addressTitle": "Adres",
+      "addressText": "Kubist Park Residence, Adnan Kahveci, Avrupa Cd. no:108 / Daire:370\n34528 Beylikdüzü/İstanbul",
+      "hoursTitle": "Çalışma Saatleri",
+      "hoursText": "Pazartesi - Cumartesi: 09:00 - 20:00\nPazar: Kapalı",
+      "socialTitle": "Sosyal Medya",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "formTitle": "Bilgilerinizi Bırakın",
+      "formSubtitle": "Biz sizi arayalım",
+      "formSuccessTitle": "Mesajınız Alındı!",
+      "formSuccessText": "En kısa sürede sizinle iletişime geçeceğiz.",
+      "privacyNote": "Kişisel verileriniz sizinle irtibat kurmak için alınmakta ve işlenmektedir.",
+      "mapEmbedSrc": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.13!2d28.625225528835433!3d41.00817107692577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjQiTiAyOMKwMzcnMzAuOCJF!5e0!3m2!1str!2str!5m2!1str!2str"
+    },
+    "footer": {
+      "brandTitle": "Fzt. İlimdar Taştanoğlu",
+      "brandSubtitle": "Özel Sağlık Meslek Hizmet Birimi",
+      "description": "Fizyoterapi ve rehabilitasyon hizmetleri. Randevu sistemi ile hizmet verilmektedir.",
+      "phoneDisplay": "0542 767 42 99",
+      "phoneHref": "tel:+905427674299",
+      "addressBlock": "Kubist Park Residence,\nAdnan Kahveci, Avrupa Cd. no:108 / Daire:370,\n34528 Beylikdüzü/İstanbul",
+      "instagramHref": "#",
+      "youtubeHref": "#",
+      "quickLinks": [
+        {
+          "href": "#anasayfa",
+          "label": "Anasayfa"
+        },
+        {
+          "href": "#hakkimda",
+          "label": "Hakkımda"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Hizmetler"
+        },
+        {
+          "href": "#istatistikler",
+          "label": "Başarılarımız"
+        },
+        {
+          "href": "#iletisim",
+          "label": "İletişim"
+        }
+      ],
+      "serviceLinks": [
+        {
+          "href": "#hizmetler",
+          "label": "Fizyoterapi ve Rehabilitasyon"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Manuel Terapi"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Spor Yaralanmaları"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Medikal Masaj"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Kişiye Özel Egzersiz"
+        },
+        {
+          "href": "#hizmetler",
+          "label": "Nörolojik Rehabilitasyon"
+        }
+      ],
+      "copyrightSuffix": "Özel Sağlık Meslek Hizmet Birimi. Tüm hakları saklıdır.",
+      "privacyLabel": "Gizlilik Politikası",
+      "privacyHref": "#",
+      "kvkkLabel": "KVKK Aydınlatma Metni",
+      "kvkkHref": "#"
+    }
+  }
+}

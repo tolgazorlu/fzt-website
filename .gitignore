@@ -17,4 +17,5 @@ node_modules/
 .DS_Store
 
 # Veritabanı dosyaları (randevu ve blog verileri)
-data/
+
+.env*
