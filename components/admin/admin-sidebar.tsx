@@ -2,13 +2,15 @@
 
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { LayoutDashboard, Calendar, FileText, LogOut, Home } from "lucide-react"
+import { LayoutDashboard, Calendar, FileText, LogOut, Home, Users, LayoutTemplate } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const navItems = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/admin/dashboard/homepage", label: "Ana sayfa", icon: LayoutTemplate },
   { href: "/admin/dashboard/appointments", label: "Randevular", icon: Calendar },
+  { href: "/admin/dashboard/patients", label: "Hastalar", icon: Users },
   { href: "/admin/dashboard/blogs", label: "Blog Yazıları", icon: FileText },
 ]
 
@@ -55,7 +57,7 @@ export function AdminSidebar() {
         </Link>
         <Button
           variant="ghost"
-          className="w-full justify-start gap-3 text-muted-foreground hover:text-destructive"
+          className="w-full justify-start gap-3 text-muted-foreground hover:bg-muted hover:text-foreground"
           onClick={handleLogout}
         >
           <LogOut className="h-5 w-5 shrink-0" />

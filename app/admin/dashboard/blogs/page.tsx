@@ -78,13 +78,6 @@ export default async function AdminBlogsPage() {
                   </td>
                   <td className="py-4 px-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      {b.published && (
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link href={`/blog/${b.slug}`} target="_blank">
-                            Görüntüle
-                          </Link>
-                        </Button>
-                      )}
                       <Button variant="ghost" size="sm" asChild>
                         <Link href={`/admin/dashboard/blogs/${b.id}/edit`} className="flex items-center gap-1">
                           <Pencil className="h-4 w-4" />

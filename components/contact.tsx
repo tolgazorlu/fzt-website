@@ -4,10 +4,12 @@ import { useState, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Phone, Mail, MapPin, Clock, Send, Instagram, Youtube } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Send, Instagram } from "lucide-react"
+import { WhatsappIcon } from "@/components/icons/whatsapp"
 import { cn } from "@/lib/utils"
+import type { HomepageContent } from "@/lib/homepage-content/schema"
 
-export function Contact() {
+export function Contact({ content }: { content: HomepageContent["contact"] }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -34,7 +36,6 @@ export function Contact() {
       setFormData({ name: "", phone: "", email: "", message: "" })
       setTimeout(() => setIsSubmitted(false), 5000)
     } catch {
-      // Hata durumunda da başarılı gibi göster (spam önleme)
       setIsSubmitted(true)
       setFormData({ name: "", phone: "", email: "", message: "" })
       setTimeout(() => setIsSubmitted(false), 5000)
@@ -53,39 +54,39 @@ export function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
+  const addressLines = content.addressText.split("\n").filter(Boolean)
+
   return (
     <section id="iletisim" className="py-24 bg-background">
       <div ref={ref} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 border border-primary/20">
-              İletişim
+              {content.badge}
             </div>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 tracking-tight">
-              Randevu ve Bilgi İçin
+              {content.title}
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Sorularınız için bize ulaşın veya randevu almak için formu doldurun. 
-              En kısa sürede size dönüş yapacağız.
+              {content.intro}
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-start gap-4 group">
-                <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/25 transition-all duration-300">
-                  <Phone className="h-5 w-5 text-primary group-hover:text-primary-foreground transition-colors" />
+              <div className="group flex items-start gap-4">
+                <div className="rounded-xl bg-primary/10 p-3 text-primary transition-[background-color,box-shadow] duration-200 group-hover:bg-primary/13 group-hover:shadow-sm group-hover:ring-2 group-hover:ring-primary/20">
+                  <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Telefon</h3>
+                  <h3 className="mb-1 font-semibold text-foreground">{content.phoneTitle}</h3>
                   <a
-                    href="tel:+905427674299"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    href={content.phoneHref}
+                    className="text-muted-foreground underline-offset-4 transition-colors hover:text-foreground"
                   >
-                    0542 767 42 99
+                    {content.phoneDisplay}
                   </a>
                 </div>
               </div>
@@ -95,9 +96,9 @@ export function Contact() {
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Randevu</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{content.appointmentTitle}</h3>
                   <p className="text-muted-foreground">
-                    Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.
+                    {content.appointmentText}
                   </p>
                 </div>
               </div>
@@ -107,10 +108,14 @@ export function Contact() {
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Adres</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{content.addressTitle}</h3>
                   <p className="text-muted-foreground">
-                    Kubist Park Residence, Adnan Kahveci, Avrupa Cd. no:108 / Daire:370<br />
-                    34528 Beylikdüzü/İstanbul
+                    {addressLines.map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i < addressLines.length - 1 ? <br /> : null}
+                      </span>
+                    ))}
                   </p>
                 </div>
               </div>
@@ -120,38 +125,46 @@ export function Contact() {
                   <Clock className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground mb-1">Çalışma Saatleri</h3>
-                  <p className="text-muted-foreground">
-                    Pazartesi - Cumartesi: 09:00 - 20:00<br />
-                    Pazar: Kapalı
+                  <h3 className="font-semibold text-foreground mb-1">{content.hoursTitle}</h3>
+                  <p className="text-muted-foreground whitespace-pre-line">
+                    {content.hoursText}
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Social Links */}
             <div className="mt-8 pt-8 border-t border-border">
-              <h3 className="font-semibold text-foreground mb-4">Sosyal Medya</h3>
-              <div className="flex gap-3">
+              <h3 className="mb-4 font-semibold text-foreground">{content.socialTitle}</h3>
+              <div className="flex flex-wrap gap-3">
                 <a
-                  href="#"
-                  className="p-3 bg-card rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
+                  href={content.instagramHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg border border-border bg-card p-3 text-foreground transition-colors hover:border-foreground/15 hover:bg-muted/70"
                   aria-label="Instagram"
                 >
-                  <Instagram className="h-5 w-5 text-foreground" />
+                  <Instagram className="h-5 w-5" />
                 </a>
                 <a
-                  href="#"
-                  className="p-3 bg-card rounded-lg border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
-                  aria-label="Youtube"
+                  href={content.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-lg border border-border bg-card p-3 text-foreground transition-colors hover:border-foreground/15 hover:bg-muted/70"
+                  aria-label="WhatsApp"
                 >
-                  <Youtube className="h-5 w-5 text-foreground" />
+                  <WhatsappIcon className="h-5 w-5" />
+                </a>
+                <a
+                  href={content.phoneHref}
+                  className="inline-flex items-center justify-center rounded-lg border border-border bg-card p-3 text-foreground transition-colors hover:border-foreground/15 hover:bg-muted/70"
+                  aria-label={`Telefon: ${content.phoneDisplay}`}
+                >
+                  <Phone className="h-5 w-5" />
                 </a>
               </div>
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -159,10 +172,10 @@ export function Contact() {
             className="bg-card rounded-2xl p-8 shadow-xl shadow-primary/5 border border-border"
           >
             <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
-              Bilgilerinizi Bırakın
+              {content.formTitle}
             </h3>
             <p className="text-muted-foreground mb-6">
-              Biz sizi arayalım
+              {content.formSubtitle}
             </p>
 
             {isSubmitted ? (
@@ -171,10 +184,10 @@ export function Contact() {
                   <Send className="h-8 w-8 text-primary" />
                 </div>
                 <h4 className="font-semibold text-foreground mb-2">
-                  Mesajınız Alındı!
+                  {content.formSuccessTitle}
                 </h4>
                 <p className="text-muted-foreground text-sm">
-                  En kısa sürede sizinle iletişime geçeceğiz.
+                  {content.formSuccessText}
                 </p>
               </div>
             ) : (
@@ -242,13 +255,13 @@ export function Contact() {
                       "flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm",
                       "placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2",
                       "focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-                      "resize-none"
+                      "resize-none",
                     )}
                   />
                 </div>
 
                 <p className="text-xs text-muted-foreground">
-                  Kişisel verileriniz sizinle irtibat kurmak için alınmakta ve işlenmektedir.
+                  {content.privacyNote}
                 </p>
 
                 <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
@@ -269,7 +282,6 @@ export function Contact() {
           </motion.div>
         </div>
 
-        {/* Map */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -277,7 +289,7 @@ export function Contact() {
           className="mt-16 rounded-2xl overflow-hidden border border-border shadow-sm h-[400px]"
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1505.13!2d28.625225528835433!3d41.00817107692577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAwJzI5LjQiTiAyOMKwMzcnMzAuOCJF!5e0!3m2!1str!2str!5m2!1str!2str"
+            src={content.mapEmbedSrc}
             width="100%"
             height="100%"
             style={{ border: 0 }}
