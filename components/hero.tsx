@@ -170,7 +170,7 @@ export function Hero({ content }: { content: HomepageContent["hero"] }) {
                   src={content.imageSrc}
                   alt={content.imageAlt}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover"
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
