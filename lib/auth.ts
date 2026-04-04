@@ -12,8 +12,14 @@ const SESSION_DURATION = 60 * 60 * 24 // 24 hours
 const DEFAULT_PASSWORD_HASH = "$2b$12$JBUSEpSJ1z3gMjfGxBdyeuQteiMxQTmcPRnODhyJ8BCF/XgNEULbG"
 
 export async function verifyPassword(password: string): Promise<boolean> {
-  const hash = process.env.ADMIN_PASSWORD_HASH || DEFAULT_PASSWORD_HASH
-  return bcrypt.compare(password, hash)
+  try {
+    const hash = process.env.ADMIN_PASSWORD_HASH || DEFAULT_PASSWORD_HASH
+    if (typeof hash !== "string" || !hash) return false
+    return await bcrypt.compare(password, hash)
+  } catch (err) {
+    console.error("[auth] verifyPassword: geçersiz ADMIN_PASSWORD_HASH veya bcrypt hatası", err)
+    return false
+  }
 }
 
 export async function createSession() {

@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { checkLoginLock } from "@/lib/auth-lock"
 
+export const dynamic = "force-dynamic"
+
 export async function GET() {
   const lock = await checkLoginLock()
   if (lock.locked && lock.remainingMs !== undefined) {

@@ -4,6 +4,7 @@ import { getPatientByCode } from "@/lib/patient-exercises-store"
 import { createPatientSession } from "@/lib/patient-auth"
 
 export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
 
 export async function POST(request: NextRequest) {
   try {
@@ -17,7 +18,13 @@ export async function POST(request: NextRequest) {
     if (!patient) {
       return NextResponse.json({ error: "Kod veya şifre hatalı" }, { status: 401 })
     }
-    const ok = await bcrypt.compare(password, patient.passwordHash)
+    let ok = false
+    try {
+      ok = await bcrypt.compare(password, patient.passwordHash)
+    } catch (err) {
+      console.error("[patient/login] bcrypt", err)
+      return NextResponse.json({ error: "Kod veya şifre hatalı" }, { status: 401 })
+    }
     if (!ok) {
       return NextResponse.json({ error: "Kod veya şifre hatalı" }, { status: 401 })
     }
