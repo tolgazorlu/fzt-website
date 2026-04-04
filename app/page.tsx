@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { Stats } from "@/components/stats";
 import { Services } from "@/components/services";
 import { About } from "@/components/about";
+import { VideoSection } from "@/components/video-section";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { getHomepageContent } from "@/lib/homepage-content/store";
@@ -19,6 +20,7 @@ export default async function Home() {
       <Stats content={content.stats} />
       <Services content={content.services} />
       <About content={content.about} />
+      <VideoSection content={content.videos} />
       <Contact content={content.contact} />
       <Footer content={content.footer} />
     </main>

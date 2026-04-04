@@ -103,6 +103,19 @@ export const homepageContentSchema = z.object({
     imageSrc: z.string(),
     imageAlt: z.string(),
   }),
+  videos: z.object({
+    badge: z.string(),
+    title: z.string(),
+    subtitle: z.string(),
+    items: z
+      .array(
+        z.object({
+          videoId: z.string().min(1),
+          caption: z.string().optional(),
+        }),
+      )
+      .min(1),
+  }),
   contact: z.object({
     badge: z.string(),
     title: z.string(),

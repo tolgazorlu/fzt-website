@@ -13,6 +13,7 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
       { href: "#hakkimda", label: "Hakkımda" },
       { href: "#hizmetler", label: "Hizmetler" },
       { href: "#istatistikler", label: "Başarılarımız" },
+      { href: "#videolar", label: "Videolar" },
       { href: "#iletisim", label: "İletişim" },
     ],
   },
@@ -160,6 +161,20 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
     imageSrc: "/ilimdar-hakkimda.png",
     imageAlt: "Fizyoterapist İlimdar Taştanoğlu",
   },
+  videos: {
+    badge: "Kısa videolar",
+    title: "Uygulama ve bilgilendirme içerikleri",
+    subtitle:
+      "Klinikte yapılan çalışmalar ve fizyoterapi ile ilgili kısa videolara buradan göz atabilirsiniz.",
+    items: [
+      { videoId: "Hz-Hse11ZRs" },
+      { videoId: "qUlbP5YU55I" },
+      { videoId: "eM8itKA6_aA" },
+      { videoId: "kfyuD710u6Y" },
+      { videoId: "g_Zulz2QK-o" },
+      { videoId: "8ZZRIz5aZw8" },
+    ],
+  },
   contact: {
     badge: "İletişim",
     title: "Randevu ve Bilgi İçin",
@@ -203,6 +218,7 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
       { href: "#hakkimda", label: "Hakkımda" },
       { href: "#hizmetler", label: "Hizmetler" },
       { href: "#istatistikler", label: "Başarılarımız" },
+      { href: "#videolar", label: "Videolar" },
       { href: "#iletisim", label: "İletişim" },
     ],
     serviceLinks: [

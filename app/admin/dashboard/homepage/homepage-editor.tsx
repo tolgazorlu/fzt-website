@@ -170,6 +170,7 @@ export function HomepageEditor({ initial }: { initial: HomepageContent }) {
           <TabsTrigger value="stats">Öne çıkanlar</TabsTrigger>
           <TabsTrigger value="services">Hizmetler</TabsTrigger>
           <TabsTrigger value="about">Hakkımda</TabsTrigger>
+          <TabsTrigger value="videos">Videolar</TabsTrigger>
           <TabsTrigger value="contact">İletişim</TabsTrigger>
           <TabsTrigger value="footer">Alt bilgi</TabsTrigger>
         </TabsList>
@@ -644,6 +645,127 @@ export function HomepageEditor({ initial }: { initial: HomepageContent }) {
                     }
                   />
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="videos" className={tabContentClass}>
+          <Card>
+            <CardContent className="space-y-4 pt-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <Label>Rozet</Label>
+                  <Input
+                    value={content.videos.badge}
+                    onChange={(e) =>
+                      setContent((c) => ({
+                        ...c,
+                        videos: { ...c.videos, badge: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Başlık</Label>
+                  <Input
+                    value={content.videos.title}
+                    onChange={(e) =>
+                      setContent((c) => ({
+                        ...c,
+                        videos: { ...c.videos, title: e.target.value },
+                      }))
+                    }
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label>Alt başlık</Label>
+                <Textarea
+                  rows={3}
+                  value={content.videos.subtitle}
+                  onChange={(e) =>
+                    setContent((c) => ({
+                      ...c,
+                      videos: { ...c.videos, subtitle: e.target.value },
+                    }))
+                  }
+                />
+              </div>
+              <div className="space-y-3">
+                <Label>YouTube video kimlikleri</Label>
+                <p className="text-xs text-muted-foreground">
+                  Örnek:{" "}
+                  <code className="rounded bg-muted px-1 py-0.5 text-[11px]">
+                    youtube.com/shorts/Hz-Hse11ZRs
+                  </code>{" "}
+                  için{" "}
+                  <code className="rounded bg-muted px-1 py-0.5 text-[11px]">Hz-Hse11ZRs</code>
+                </p>
+                {content.videos.items.map((row, i) => (
+                  <div key={i} className="flex flex-wrap items-end gap-2 rounded-lg border border-border/70 bg-muted/20 p-3">
+                    <div className="min-w-[140px] flex-1 space-y-1">
+                      <Label className="text-xs text-muted-foreground">videoId</Label>
+                      <Input
+                        value={row.videoId}
+                        onChange={(e) => {
+                          const next = [...content.videos.items]
+                          next[i] = { ...next[i], videoId: e.target.value }
+                          setContent((c) => ({ ...c, videos: { ...c.videos, items: next } }))
+                        }}
+                        placeholder="Hz-Hse11ZRs"
+                      />
+                    </div>
+                    <div className="min-w-[160px] flex-[2] space-y-1">
+                      <Label className="text-xs text-muted-foreground">Altyazı (isteğe bağlı)</Label>
+                      <Input
+                        value={row.caption ?? ""}
+                        onChange={(e) => {
+                          const next = [...content.videos.items]
+                          next[i] = { ...next[i], caption: e.target.value || undefined }
+                          setContent((c) => ({ ...c, videos: { ...c.videos, items: next } }))
+                        }}
+                      />
+                    </div>
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="icon"
+                      className="shrink-0 text-muted-foreground hover:bg-muted hover:text-foreground"
+                      onClick={() =>
+                        setContent((c) => ({
+                          ...c,
+                          videos: {
+                            ...c.videos,
+                            items: c.videos.items.filter((_, j) => j !== i),
+                          },
+                        }))
+                      }
+                      disabled={content.videos.items.length <= 1}
+                      aria-label="Videoyu kaldır"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="gap-1"
+                  onClick={() =>
+                    setContent((c) => ({
+                      ...c,
+                      videos: {
+                        ...c.videos,
+                        items: [...c.videos.items, { videoId: "" }],
+                      },
+                    }))
+                  }
+                >
+                  <Plus className="h-3.5 w-3.5" />
+                  Video ekle
+                </Button>
               </div>
             </CardContent>
           </Card>
