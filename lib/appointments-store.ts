@@ -50,7 +50,8 @@ function getRedis(): Redis {
     if (!url || !token) {
       throw new Error("Upstash Redis env vars are missing");
     }
-    redisClient = new Redis({ url, token });
+    // Upstash defaults to JSON-deserializing GET; we store a string and parse ourselves.
+    redisClient = new Redis({ url, token, automaticDeserialization: false });
   }
   return redisClient;
 }

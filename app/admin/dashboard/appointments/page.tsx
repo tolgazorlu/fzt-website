@@ -1,5 +1,7 @@
 import { getAppointments } from "@/lib/db"
 import { Calendar, Mail, Phone, User, MessageSquare } from "lucide-react"
+
+export const dynamic = "force-dynamic"
 import {
   Table,
   TableBody,

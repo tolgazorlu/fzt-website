@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { getAppointments, getBlogs } from "@/lib/db"
+
+export const dynamic = "force-dynamic"
 import { listPatientSummariesForAdmin } from "@/lib/patient-exercises-store"
 import { Calendar, FileText, ArrowRight, Users, LayoutTemplate } from "lucide-react"
 import { Button } from "@/components/ui/button"
