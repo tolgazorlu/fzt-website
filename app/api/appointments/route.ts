@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { addAppointment, getAppointments } from "@/lib/db";
 import { isAuthenticated } from "@/lib/auth";
+import { AppointmentsStorageNotConfiguredError } from "@/lib/appointments-store";
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,7 +20,17 @@ export async function POST(request: NextRequest) {
       message: String(message || "").trim(),
     });
     return NextResponse.json({ success: true, id: appointment.id });
-  } catch {
+  } catch (err) {
+    if (err instanceof AppointmentsStorageNotConfiguredError) {
+      return NextResponse.json(
+        {
+          error:
+            "Randevu kaydı henüz yapılandırılmamış. Vercel’de KV_REST_API_URL ve KV_REST_API_TOKEN (veya UPSTASH_REDIS_*) ortam değişkenlerini ekleyin. Yazma için salt okunur token kullanmayın.",
+        },
+        { status: 503 },
+      );
+    }
+    console.error("POST /api/appointments", err);
     return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 });
   }
 }

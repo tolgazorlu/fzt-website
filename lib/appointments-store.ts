@@ -1,5 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { randomUUID } from "node:crypto";
+import { Redis } from "@upstash/redis";
 
 export interface Appointment {
   id: string;
@@ -10,10 +12,54 @@ export interface Appointment {
   createdAt: string;
 }
 
+/** Vercel serverless has a read-only filesystem; use Upstash Redis / Vercel KV in production. */
+export class AppointmentsStorageNotConfiguredError extends Error {
+  constructor() {
+    super(
+      "Set KV_REST_API_URL + KV_REST_API_TOKEN (Vercel KV) or UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN.",
+    );
+    this.name = "AppointmentsStorageNotConfiguredError";
+  }
+}
+
 const DATA_DIR = path.join(process.cwd(), "data");
 const FILE = path.join(DATA_DIR, "appointments.json");
+const REDIS_KEY = "fzt:appointments:v1";
 
-/** Serialize writes so concurrent POSTs do not corrupt the JSON file */
+function redisRestUrl(): string | undefined {
+  return (
+    process.env.KV_REST_API_URL?.trim() ||
+    process.env.UPSTASH_REDIS_REST_URL?.trim()
+  );
+}
+
+/** Read/write REST token — do not use KV_REST_API_READ_ONLY_TOKEN for POST / appointments. */
+function redisRestToken(): string | undefined {
+  return (
+    process.env.KV_REST_API_TOKEN?.trim() ||
+    process.env.UPSTASH_REDIS_REST_TOKEN?.trim()
+  );
+}
+
+let redisClient: Redis | null = null;
+
+function getRedis(): Redis {
+  if (!redisClient) {
+    const url = redisRestUrl();
+    const token = redisRestToken();
+    if (!url || !token) {
+      throw new Error("Upstash Redis env vars are missing");
+    }
+    redisClient = new Redis({ url, token });
+  }
+  return redisClient;
+}
+
+function useRedisStorage(): boolean {
+  return Boolean(redisRestUrl() && redisRestToken());
+}
+
+/** Serialize writes so concurrent POSTs do not corrupt storage */
 let writeChain: Promise<void> = Promise.resolve();
 
 function serializeWrites<T>(fn: () => Promise<T>): Promise<T> {
@@ -28,7 +74,7 @@ function serializeWrites<T>(fn: () => Promise<T>): Promise<T> {
   return next.then(() => result!);
 }
 
-async function ensureFile(): Promise<void> {
+async function ensureLocalFile(): Promise<void> {
   await fs.mkdir(DATA_DIR, { recursive: true });
   try {
     await fs.access(FILE);
@@ -60,24 +106,55 @@ function isAppointmentRecord(row: unknown): row is Appointment {
   );
 }
 
-export async function readAppointmentsFromFile(): Promise<Appointment[]> {
-  await ensureFile();
-  const raw = await fs.readFile(FILE, "utf-8");
-  const list = parseAppointments(raw);
+function sortNewestFirst(list: Appointment[]): Appointment[] {
   return [...list].sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   );
 }
 
-export async function addAppointmentToFile(
+async function readFromRedis(): Promise<Appointment[]> {
+  const raw = await getRedis().get<string>(REDIS_KEY);
+  if (raw == null || raw === "") return [];
+  return sortNewestFirst(parseAppointments(raw));
+}
+
+async function readFromFile(): Promise<Appointment[]> {
+  await ensureLocalFile();
+  const raw = await fs.readFile(FILE, "utf-8");
+  return sortNewestFirst(parseAppointments(raw));
+}
+
+async function addToRedis(
   input: Omit<Appointment, "id" | "createdAt">,
 ): Promise<Appointment> {
   return serializeWrites(async () => {
-    await ensureFile();
+    const redis = getRedis();
+    const raw = await redis.get<string>(REDIS_KEY);
+    const existing =
+      raw == null || raw === "" ? [] : parseAppointments(raw);
+    const appointment: Appointment = {
+      id: randomUUID(),
+      name: input.name,
+      phone: input.phone,
+      email: input.email,
+      message: input.message,
+      createdAt: new Date().toISOString(),
+    };
+    const next = [appointment, ...existing];
+    await redis.set(REDIS_KEY, JSON.stringify(next));
+    return appointment;
+  });
+}
+
+async function addToFile(
+  input: Omit<Appointment, "id" | "createdAt">,
+): Promise<Appointment> {
+  return serializeWrites(async () => {
+    await ensureLocalFile();
     const raw = await fs.readFile(FILE, "utf-8");
     const existing = parseAppointments(raw);
     const appointment: Appointment = {
-      id: crypto.randomUUID(),
+      id: randomUUID(),
       name: input.name,
       phone: input.phone,
       email: input.email,
@@ -88,4 +165,23 @@ export async function addAppointmentToFile(
     await fs.writeFile(FILE, `${JSON.stringify(next, null, 2)}\n`, "utf-8");
     return appointment;
   });
+}
+
+export async function readAppointmentsFromFile(): Promise<Appointment[]> {
+  if (useRedisStorage()) {
+    return readFromRedis();
+  }
+  return readFromFile();
+}
+
+export async function addAppointmentToFile(
+  input: Omit<Appointment, "id" | "createdAt">,
+): Promise<Appointment> {
+  if (useRedisStorage()) {
+    return addToRedis(input);
+  }
+  if (process.env.VERCEL) {
+    throw new AppointmentsStorageNotConfiguredError();
+  }
+  return addToFile(input);
 }
