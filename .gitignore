@@ -19,3 +19,4 @@ node_modules/
 # Veritabanı dosyaları (randevu ve blog verileri)
 
 .env*
+.vercel
