@@ -1,4 +1,4 @@
-import type { HomepageContent } from "./schema"
+import type { HomepageContent } from "./schema";
 
 export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
   header: {
@@ -20,7 +20,7 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
   hero: {
     badge: "Uluslararası Deneyim · Beylikdüzü",
     headlineLine1: "Fizyoterapi ve Rehabilitasyonda",
-    headlineAccent: "Profesyonel Çözüm",
+    headlineAccent: "Profesyonel Destek",
     subtitle: "Fzt. İlimdar Taştanoğlu",
     description:
       "Almanya'da edindiğim klinik deneyim ve spor fizyoterapisi alanında devam eden yüksek lisans eğitimim doğrultusunda, bireye özgü fizyoterapi ve rehabilitasyon hizmetleri sunulmaktadır. Uygulamalar, güncel bilimsel yaklaşımlar çerçevesinde planlanmaktadır.",
@@ -69,7 +69,7 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
     ],
   },
   services: {
-    badge: "Profesyonel Çözümler",
+    badge: "Profesyonel Destek",
     title: "Uzmanlık Alanları",
     subtitle:
       "Randevu sistemi ile sunulan, bireysel değerlendirme sonrası kişiye özel fizyoterapi hizmetleri",
@@ -90,7 +90,11 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
         title: "Manuel Terapi",
         description:
           "Eklem mobilizasyonu ve yumuşak doku teknikleriyle ağrı ve hareket kısıtlılıklarında destek sağlanır; uygulamalar bilimsel yaklaşımla planlanır.",
-        details: ["Eklem mobilizasyonu", "Yumuşak doku teknikleri", "Kişiye özel uygulama"],
+        details: [
+          "Eklem mobilizasyonu",
+          "Yumuşak doku teknikleri",
+          "Kişiye özel uygulama",
+        ],
       },
       {
         icon: "Bone",
@@ -108,14 +112,22 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
         title: "Kişiye Özel Egzersiz",
         description:
           "Değerlendirme sonrası kişiye uygun fizyoterapi ve egzersiz programları planlanarak hareket fonksiyonlarının desteklenmesi amaçlanır.",
-        details: ["Bel ve boyun fıtıkları", "Diz ağrısı ve diz problemleri", "Omuz ağrısı ve omuz yaralanmaları"],
+        details: [
+          "Bel ve boyun fıtıkları",
+          "Diz ağrısı ve diz problemleri",
+          "Omuz ağrısı ve omuz yaralanmaları",
+        ],
       },
       {
         icon: "Brain",
         title: "Medikal Masaj",
         description:
           "Ağrı yönetimi ve doku iyileşmesini desteklemek üzere medikal masaj uygulamaları, güncel yaklaşımlar çerçevesinde uygulanmaktadır.",
-        details: ["Fibromiyalji", "Tendinit ve aşırı kullanım yaralanmaları", "Kas-iskelet kaynaklı ağrı"],
+        details: [
+          "Fibromiyalji",
+          "Tendinit ve aşırı kullanım yaralanmaları",
+          "Kas-iskelet kaynaklı ağrı",
+        ],
       },
       {
         icon: "Heart",
@@ -184,7 +196,8 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
     phoneDisplay: "0542 767 42 99",
     phoneHref: "tel:+905427674299",
     appointmentTitle: "Randevu",
-    appointmentText: "Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.",
+    appointmentText:
+      "Randevu için 0542 767 42 99 numaralı telefondan arayabilirsiniz.",
     addressTitle: "Adres",
     addressText:
       "Kubist Park Residence, Adnan Kahveci, Avrupa Cd. no:108 / Daire:370\n34528 Beylikdüzü/İstanbul",
@@ -235,4 +248,4 @@ export const DEFAULT_HOMEPAGE_CONTENT: HomepageContent = {
     kvkkLabel: "KVKK Aydınlatma Metni",
     kvkkHref: "#",
   },
-}
+};
