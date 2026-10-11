@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addAppointment, getAppointments } from "@/lib/db";
-import { isAuthenticated } from "@/lib/auth";
+import { addAppointment } from "@/lib/db";
 import { AppointmentsStorageNotConfiguredError } from "@/lib/appointments-store";
 
 export async function POST(request: NextRequest) {
@@ -33,13 +32,4 @@ export async function POST(request: NextRequest) {
     console.error("POST /api/appointments", err);
     return NextResponse.json({ error: "Sunucu hatası" }, { status: 500 });
   }
-}
-
-export async function GET(request: NextRequest) {
-  const auth = await isAuthenticated();
-  if (!auth) {
-    return NextResponse.json({ error: "Yetkisiz" }, { status: 401 });
-  }
-  const appointments = await getAppointments();
-  return NextResponse.json(appointments);
 }
